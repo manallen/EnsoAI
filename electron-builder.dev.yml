@@ -1,0 +1,91 @@
+appId: com.ensoai.dev
+productName: enso dev
+copyright: Copyright © 2025
+
+extraMetadata:
+  name: enso-dev
+  productName: enso dev
+
+directories:
+  output: dist-dev
+  buildResources: build
+
+files:
+  - "out/**/*"
+  - "node_modules/**/*"
+  - "!node_modules/**/README.md"
+  - "!node_modules/**/CHANGELOG.md"
+  - "!node_modules/**/LICENSE*"
+  - "!node_modules/**/*.md"
+  - "!node_modules/**/*.ts"
+  - "!node_modules/**/*.map"
+  - "!node_modules/**/test/**"
+  - "!node_modules/**/tests/**"
+  - "!node_modules/**/__tests__/**"
+  - "!node_modules/**/docs/**"
+  - "!node_modules/**/example/**"
+  - "!node_modules/**/examples/**"
+  - "!node_modules/lightningcss-*/**"
+  - "!node_modules/@tailwindcss/**"
+  - "!node_modules/tailwindcss/**"
+  - "!node_modules/jiti/**"
+  - "!node_modules/node-pty/src/**"
+  - "!node_modules/node-pty/deps/**"
+  - "!node_modules/lucide-react/dist/*.mjs.map"
+  - "!node_modules/lucide-react/dist/*.d.ts"
+  - "!node_modules/lucide-react/dist/*.d.mts"
+  - "!node_modules/lucide-react/dist/cjs/**"
+  - "!node_modules/lucide-react/dist/umd/**"
+  - "!node_modules/monaco-editor/dev/**"
+  - "!node_modules/monaco-editor/min/**"
+  - "!node_modules/shiki/dist/langs/**"
+  - "!node_modules/shiki/dist/themes/**"
+  - "!node_modules/@shikijs/langs/**"
+  - "!node_modules/@shikijs/themes/**"
+  - "!node_modules/@openai/codex/vendor/**"
+  - "!node_modules/@anthropic-ai/claude-agent-sdk/vendor/**"
+  - "!node_modules/@anthropic-ai/claude-agent-sdk/cli.js"
+  - "!node_modules/@anthropic-ai/claude-agent-sdk/*.wasm"
+  - "!node_modules/cloudflared/bin/**"
+  - "!node_modules/mermaid/**"
+  - "!node_modules/@mermaid-js/**"
+  - "!node_modules/cytoscape/**"
+  - "!node_modules/cytoscape-*/**"
+  - "!node_modules/@chevrotain/**"
+  - "!node_modules/chevrotain/**"
+  - "!node_modules/langium/**"
+  - "!node_modules/katex/**"
+  - "!node_modules/lodash-es/**"
+  - "!node_modules/d3/**"
+  - "!node_modules/d3-*/**"
+  - "!node_modules/dagre-d3-es/**"
+  - "!node_modules/elkjs/**"
+  - "!node_modules/web-tree-sitter/**"
+  - "!node_modules/khroma/**"
+  - "!node_modules/dompurify/**"
+  - "!node_modules/pdfjs-dist/**"
+  - "!node_modules/react-pdf/**"
+
+asar: true
+asarUnpack:
+  - "node_modules/@vscode/ripgrep/bin/**"
+  - "node_modules/sqlite3/**"
+compression: maximum
+
+mac:
+  target:
+    - dir
+  category: public.app-category.developer-tools
+  icon: build/icon.icns
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  identity: null
+  notarize: false
+  extendInfo:
+    CFBundleDisplayName: enso dev
+    CFBundleName: enso dev
+    CFBundleIdentifier: com.ensoai.dev
+    CFBundleURLTypes:
+      - CFBundleURLName: enso dev
+        CFBundleURLSchemes:
+          - enso-dev

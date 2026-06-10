@@ -1,5 +1,5 @@
+import { Maximize2, Minimize2, Minus, Plus, RotateCcw, X } from 'lucide-react';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import { Maximize2, Minus, Minimize2, Plus, RotateCcw, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/stores/settings';
 
@@ -216,7 +216,7 @@ export function MermaidRenderer({ code, className }: MermaidRendererProps) {
   }, []);
 
   const handleFullscreenOverlayClick = useCallback(
-    (e: React.MouseEvent) => {
+    (_e: React.MouseEvent) => {
       // Only exit if the user didn't drag (just a click on the overlay background)
       if (!hasDraggedRef.current) {
         handleExitFullscreen();
@@ -255,7 +255,10 @@ export function MermaidRenderer({ code, className }: MermaidRendererProps) {
   }
 
   return (
-    <div className={cn('relative rounded-lg border border-border bg-muted/30', className)} style={{ userSelect: 'none', WebkitUserSelect: 'none' }}>
+    <div
+      className={cn('relative rounded-lg border border-border bg-muted/30', className)}
+      style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+    >
       <div
         ref={containerRef}
         className={cn(
@@ -337,11 +340,17 @@ export function MermaidRenderer({ code, className }: MermaidRendererProps) {
         <div
           className="fixed inset-0 z-50 flex flex-col select-none bg-background"
           onClick={handleFullscreenOverlayClick}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              handleExitFullscreen();
+            }
+          }}
         >
           {/* Header bar */}
           <div
             className="flex shrink-0 items-center justify-between border-b border-border bg-muted/30 px-4 py-2"
             onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
           >
             <span className="text-sm font-medium text-muted-foreground">Mermaid 预览</span>
             <button
@@ -368,6 +377,7 @@ export function MermaidRenderer({ code, className }: MermaidRendererProps) {
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
               onClick={handleFullscreenContentClick}
+              onKeyDown={(e) => e.stopPropagation()}
             >
               <div
                 className="origin-center transition-transform duration-100 ease-out"

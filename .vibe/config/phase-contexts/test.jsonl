@@ -1,0 +1,9 @@
+{"file":"context/global.md","reason":"项目技术栈和约定","required":true}
+{"file":"needs/{req}/prd.summary.md","reason":"测试阶段默认使用的验收摘要","required":false,"when_missing":"warn"}
+{"file":"needs/{req}/plan.summary.md","reason":"测试阶段默认使用的任务边界摘要","required":false,"when_missing":"warn"}
+{"file":"needs/{req}/test-report.summary.md","reason":"重测时优先对比上次测试摘要（support only）","required":false,"when_missing":"skip"}
+{"file":"needs/{req}/requirements.md","reason":"compat fallback 约束摘要","required":false,"when_missing":"skip"}
+{"file":"needs/{req}/DESIGN.summary.md","reason":"需求级设计覆盖摘要（support only）","required":false,"when_missing":"skip"}
+{"file":"design/tokens/design-tokens.json","reason":"设计一致性测试的轻量令牌输入（token-first support）","required":false,"when_missing":"skip"}
+{"file":"design/DESIGN.summary.md","reason":"项目级设计系统摘要（support only）","required":false,"when_missing":"skip"}
+{"file":"needs/{req}/context.md","reason":"需求级 `## 执行备注` section（support only，非整份 history）","required":false,"when_missing":"skip"}

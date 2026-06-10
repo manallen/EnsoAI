@@ -55,6 +55,7 @@ export function HapiSettings() {
 
   // Local state for inputs
   const [localPort, setLocalPort] = React.useState(String(hapiSettings.webappPort));
+  const [localHost, setLocalHost] = React.useState(hapiSettings.webappHost);
   const [localToken, setLocalToken] = React.useState(hapiSettings.cliApiToken);
   const [localTelegramToken, setLocalTelegramToken] = React.useState(hapiSettings.telegramBotToken);
   const [localWebappUrl, setLocalWebappUrl] = React.useState(hapiSettings.webappUrl);
@@ -63,6 +64,7 @@ export function HapiSettings() {
   // Sync local state with store
   React.useEffect(() => {
     setLocalPort(String(hapiSettings.webappPort));
+    setLocalHost(hapiSettings.webappHost);
     setLocalToken(hapiSettings.cliApiToken);
     setLocalTelegramToken(hapiSettings.telegramBotToken);
     setLocalWebappUrl(hapiSettings.webappUrl);
@@ -115,12 +117,13 @@ export function HapiSettings() {
   const getConfig = React.useCallback(() => {
     return {
       webappPort: Number(localPort) || 3006,
+      webappHost: localHost.trim() || '127.0.0.1',
       cliApiToken: localToken,
       telegramBotToken: localTelegramToken,
       webappUrl: localWebappUrl,
       allowedChatIds: localAllowedChatIds,
     };
-  }, [localPort, localToken, localTelegramToken, localWebappUrl, localAllowedChatIds]);
+  }, [localPort, localHost, localToken, localTelegramToken, localWebappUrl, localAllowedChatIds]);
 
   const saveSettings = React.useCallback(() => {
     const config = getConfig();
@@ -441,6 +444,25 @@ export function HapiSettings() {
 
             {/* Server Port */}
             <div className="grid grid-cols-[140px_1fr] items-center gap-4">
+              <span className="text-sm font-medium">{t('Listen Host')}</span>
+              <div className="space-y-1.5">
+                <Input
+                  type="text"
+                  value={localHost}
+                  onChange={(e) => setLocalHost(e.target.value)}
+                  onBlur={() =>
+                    setHapiSettings({ webappHost: localHost.trim() || '127.0.0.1' })
+                  }
+                  placeholder="127.0.0.1"
+                  className="w-44 font-mono text-xs"
+                />
+                <p className="text-xs text-muted-foreground">
+                  {t('Use 0.0.0.0 to allow LAN access')}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-[140px_1fr] items-center gap-4">
               <span className="text-sm font-medium">{t('Server Port')}</span>
               <div className="space-y-1.5">
                 <Input
@@ -506,11 +528,11 @@ export function HapiSettings() {
                   value={localWebappUrl}
                   onChange={(e) => setLocalWebappUrl(e.target.value)}
                   onBlur={() => setHapiSettings({ webappUrl: localWebappUrl })}
-                  placeholder="https://example.com"
+                  placeholder="http://192.168.1.177:3006"
                   className="font-mono text-xs"
                 />
                 <p className="text-xs text-muted-foreground">
-                  {t('Public URL for Telegram Mini App')}
+                  {t('URL used by remote clients and Telegram Mini App')}
                 </p>
               </div>
             </div>

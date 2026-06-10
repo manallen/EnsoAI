@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useI18n } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/stores/settings';
+import { AgentCreateCountInput } from './AgentCreateCountInput';
 import { type Session, SessionBar } from './SessionBar';
 import type { AgentGroup as AgentGroupType } from './types';
 
@@ -20,10 +21,12 @@ interface AgentGroupProps {
   onSessionSelect: (sessionId: string) => void;
   onSessionClose: (sessionId: string) => void;
   onSessionNew: () => void;
-  onSessionNewWithAgent: (agentId: string, agentCommand: string) => void;
+  onSessionNewWithAgent: (agentId: string, agentCommand: string, count?: number) => void;
   onSessionRename: (sessionId: string, name: string) => void;
   onSessionReorder: (fromIndex: number, toIndex: number) => void;
   onGroupClick: () => void;
+  agentCreateCount: number;
+  onAgentCreateCountChange: (value: number) => void;
   // Quick Terminal props
   quickTerminalOpen?: boolean;
   quickTerminalHasProcess?: boolean;
@@ -44,6 +47,8 @@ export function AgentGroup({
   onSessionRename,
   onSessionReorder,
   onGroupClick,
+  agentCreateCount,
+  onAgentCreateCountChange,
   quickTerminalOpen,
   quickTerminalHasProcess,
   onToggleQuickTerminal,
@@ -100,7 +105,14 @@ export function AgentGroup({
           {showAgentMenu && enabledAgents.length > 0 && (
             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 z-50 min-w-40">
               <div className="rounded-lg border bg-popover p-1 shadow-lg">
-                <div className="px-2 py-1 text-xs text-muted-foreground">{t('Select Agent')}</div>
+                <div className="flex items-center justify-between gap-2 px-2 py-1">
+                  <span className="text-xs text-muted-foreground">{t('Select Agent')}</span>
+                  <AgentCreateCountInput
+                    ariaLabel={t('Agent count')}
+                    value={agentCreateCount}
+                    onChange={onAgentCreateCountChange}
+                  />
+                </div>
                 {[...enabledAgents]
                   .sort((a, b) => {
                     const aDefault = agentSettings[a]?.isDefault ? 1 : 0;
@@ -130,7 +142,8 @@ export function AgentGroup({
                         onClick={() => {
                           onSessionNewWithAgent(
                             agentId,
-                            customAgent?.command ?? agentInfo[baseId]?.command ?? 'claude'
+                            customAgent?.command ?? agentInfo[baseId]?.command ?? 'claude',
+                            agentCreateCount
                           );
                           setShowAgentMenu(false);
                         }}
@@ -164,6 +177,8 @@ export function AgentGroup({
       onNewSessionWithAgent={onSessionNewWithAgent}
       onRenameSession={onSessionRename}
       onReorderSessions={onSessionReorder}
+      agentCreateCount={agentCreateCount}
+      onAgentCreateCountChange={onAgentCreateCountChange}
       quickTerminalOpen={quickTerminalOpen}
       quickTerminalHasProcess={quickTerminalHasProcess}
       onToggleQuickTerminal={onToggleQuickTerminal}

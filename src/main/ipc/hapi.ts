@@ -9,6 +9,7 @@ import { type HapiConfig, hapiServerManager } from '../services/hapi/HapiServerM
 interface StoredHapiSettings {
   enabled: boolean;
   webappPort: number;
+  webappHost?: string;
   cliApiToken: string;
   telegramBotToken: string;
   webappUrl: string;
@@ -50,7 +51,7 @@ function waitForHapiReady(maxAttempts = 60, intervalMs = 500): Promise<boolean> 
   });
 }
 
-async function syncRunnerState(runnerEnabled: boolean): Promise<void> {
+async function syncRunnerState(runnerEnabled: boolean, config?: HapiConfig): Promise<void> {
   if (!runnerEnabled) {
     await hapiRunnerManager.stop();
     return;
@@ -62,14 +63,14 @@ async function syncRunnerState(runnerEnabled: boolean): Promise<void> {
     return;
   }
 
-  const runnerStatus = await hapiRunnerManager.start();
+  const runnerStatus = await hapiRunnerManager.start(config);
   if (!runnerStatus.running && runnerStatus.error) {
     console.error('[hapi:runner] Start failed:', runnerStatus.error);
   }
 }
 
-function syncRunnerStateInBackground(runnerEnabled: boolean): void {
-  void syncRunnerState(runnerEnabled).catch((error) => {
+function syncRunnerStateInBackground(runnerEnabled: boolean, config?: HapiConfig): void {
+  void syncRunnerState(runnerEnabled, config).catch((error) => {
     console.error('[hapi:runner] Failed to sync runner state:', error);
   });
 }
@@ -91,7 +92,7 @@ export function registerHapiHandlers(): void {
     const status = await hapiServerManager.start(hapiConfig);
 
     if (status.running) {
-      syncRunnerStateInBackground(runnerEnabled);
+      syncRunnerStateInBackground(runnerEnabled, hapiConfig);
     }
 
     return status;
@@ -109,7 +110,7 @@ export function registerHapiHandlers(): void {
     const status = await hapiServerManager.restart(hapiConfig);
 
     if (status.running) {
-      syncRunnerStateInBackground(runnerEnabled);
+      syncRunnerStateInBackground(runnerEnabled, hapiConfig);
     }
 
     return status;
@@ -137,7 +138,7 @@ export function registerHapiHandlers(): void {
       };
     }
 
-    return await hapiRunnerManager.start();
+    return await hapiRunnerManager.start(hapiServerManager.getConfig());
   });
 
   ipcMain.handle(IPC_CHANNELS.HAPI_RUNNER_STOP, async () => {
@@ -231,6 +232,7 @@ export async function autoStartHapi(): Promise<void> {
       console.log('[hapi] Auto-starting server from saved settings...');
       const config: HapiConfig = {
         webappPort: hapiSettings.webappPort || 3006,
+        webappHost: hapiSettings.webappHost || '127.0.0.1',
         cliApiToken: hapiSettings.cliApiToken || '',
         telegramBotToken: hapiSettings.telegramBotToken || '',
         webappUrl: hapiSettings.webappUrl || '',
@@ -244,7 +246,7 @@ export async function autoStartHapi(): Promise<void> {
 
         const ready = await waitForHapiReady();
         if (ready) {
-          await hapiRunnerManager.start();
+          await hapiRunnerManager.start(config);
         } else {
           console.warn('[hapi:runner] Skip auto-start: hapi server is not ready');
         }

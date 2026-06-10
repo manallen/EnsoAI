@@ -1,0 +1,3 @@
+{"file":"context/global.md","reason":"项目技术栈和目录约定","required":true}
+{"file":"needs/{req}/STATE.md","reason":"需求短描述与可选 Start Input section；仅作为当前探索入口摘要","required":true}
+{"file":"needs/{req}/context.md","reason":"需求级 `## 关键发现` section（非整份 history）","required":false,"when_missing":"skip"}

@@ -205,6 +205,10 @@ export function AgentTerminal({
 
   // Start polling for process activity
   const startActivityPolling = useCallback(() => {
+    if (!isActiveRef.current) {
+      return;
+    }
+
     // Clear any existing interval
     if (activityPollIntervalRef.current) {
       clearInterval(activityPollIntervalRef.current);
@@ -212,8 +216,8 @@ export function AgentTerminal({
     consecutiveIdleCountRef.current = 0;
 
     activityPollIntervalRef.current = setInterval(async () => {
-      if (!ptyIdRef.current || !isMonitoringOutputRef.current) {
-        // Stop polling if no PTY or not monitoring
+      if (!ptyIdRef.current || !isMonitoringOutputRef.current || !isActiveRef.current) {
+        // Stop polling if no PTY, not monitoring, or no longer visible/active.
         if (activityPollIntervalRef.current) {
           clearInterval(activityPollIntervalRef.current);
           activityPollIntervalRef.current = null;
@@ -264,6 +268,12 @@ export function AgentTerminal({
       activityPollIntervalRef.current = null;
     }
   }, []);
+
+  useEffect(() => {
+    if (!isActive) {
+      stopActivityPolling();
+    }
+  }, [isActive, stopActivityPolling]);
 
   // Cleanup runtime state on unmount
   useEffect(() => {

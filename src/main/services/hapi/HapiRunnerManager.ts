@@ -12,6 +12,12 @@ export interface HapiRunnerStatus {
 
 type RunnerAction = 'start' | 'stop';
 
+export interface HapiRunnerConfig {
+  webappPort: number;
+  webappHost: string;
+  cliApiToken: string;
+}
+
 interface RunnerCommandResult {
   code: number | null;
   stdout: string;
@@ -31,14 +37,26 @@ class HapiRunnerManager extends EventEmitter {
 
   private async runRunnerCommand(
     action: RunnerAction,
-    timeoutMs = 30000
+    timeoutMs = 30000,
+    config?: HapiRunnerConfig
   ): Promise<RunnerCommandResult> {
     const command = await this.getRunnerCommand(action);
     const { shell, args: shellArgs } = getShellForCommand();
+    const env: Record<string, string> = {};
+
+    if (config) {
+      const apiHost =
+        config.webappHost && config.webappHost !== '0.0.0.0' ? config.webappHost : '127.0.0.1';
+      env.HAPI_API_URL = `http://${apiHost}:${config.webappPort}`;
+
+      if (config.cliApiToken) {
+        env.CLI_API_TOKEN = config.cliApiToken;
+      }
+    }
 
     return new Promise((resolve) => {
       const proc = spawn(shell, [...shellArgs, command], {
-        env: getEnvForCommand(),
+        env: getEnvForCommand(env),
         stdio: ['ignore', 'pipe', 'pipe'],
       });
 
@@ -137,8 +155,8 @@ class HapiRunnerManager extends EventEmitter {
     return /(already\s+stopped|not\s+running|\bstopped\b|\binactive\b|no\s+runner)/i.test(output);
   }
 
-  async start(): Promise<HapiRunnerStatus> {
-    const result = await this.runRunnerCommand('start', 120000);
+  async start(config?: HapiRunnerConfig): Promise<HapiRunnerStatus> {
+    const result = await this.runRunnerCommand('start', 120000, config);
     const output = `${result.stdout}\n${result.stderr}`.trim();
 
     if (result.code === 0 || this.isRunningOutput(output)) {

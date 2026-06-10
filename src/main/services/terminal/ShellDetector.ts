@@ -473,7 +473,10 @@ class ShellDetector {
 
   getDefaultShell(): string {
     if (isWindows) {
-      const pwshPath = this.findAvailablePath(['C:\\Program Files\\PowerShell\\7\\pwsh.exe', 'pwsh.exe']);
+      const pwshPath = this.findAvailablePath([
+        'C:\\Program Files\\PowerShell\\7\\pwsh.exe',
+        'pwsh.exe',
+      ]);
       if (pwshPath) {
         return pwshPath;
       }

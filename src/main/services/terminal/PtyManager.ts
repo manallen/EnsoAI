@@ -149,6 +149,30 @@ function applyEnhancedPath(env: Record<string, string>): void {
   }
 }
 
+function createTerminalEnv(optionsEnv?: Record<string, string>): Record<string, string> {
+  const env = {
+    ...process.env,
+    ...getProxyEnvVars(),
+    ...optionsEnv,
+    TERM: 'xterm-256color',
+    COLORTERM: 'truecolor',
+    CLICOLOR: '1',
+    FORCE_COLOR: process.env.FORCE_COLOR || optionsEnv?.FORCE_COLOR || '3',
+    // Ensure proper locale for UTF-8 support (GUI apps may not inherit LANG)
+    LANG: process.env.LANG || 'en_US.UTF-8',
+    LC_ALL: process.env.LC_ALL || process.env.LANG || 'en_US.UTF-8',
+  } as Record<string, string>;
+
+  // The desktop app may inherit NO_COLOR from the launching shell. For an
+  // interactive terminal surface, that makes tools like Codex/Claude render as
+  // plain gray text even though xterm has a full ANSI palette.
+  delete env.NO_COLOR;
+  delete env.NO_COLOUR;
+
+  applyEnhancedPath(env);
+  return env;
+}
+
 /**
  * Read full PATH from Windows registry (user + system level)
  * This ensures GUI apps get the same PATH as terminal apps
@@ -404,17 +428,7 @@ export class PtyManager {
     }
 
     let ptyProcess: pty.IPty;
-    const baseEnv: Record<string, string> = {
-      ...process.env,
-      ...getProxyEnvVars(),
-      ...options.env,
-      TERM: 'xterm-256color',
-      COLORTERM: 'truecolor',
-      // Ensure proper locale for UTF-8 support (GUI apps may not inherit LANG)
-      LANG: process.env.LANG || 'en_US.UTF-8',
-      LC_ALL: process.env.LC_ALL || process.env.LANG || 'en_US.UTF-8',
-    } as Record<string, string>;
-    applyEnhancedPath(baseEnv);
+    const baseEnv = createTerminalEnv(options.env);
 
     try {
       ptyProcess = pty.spawn(shell, args, {
@@ -435,16 +449,7 @@ export class PtyManager {
             cols: options.cols || 80,
             rows: options.rows || 24,
             cwd,
-            env: {
-              ...process.env,
-              ...getProxyEnvVars(),
-              ...options.env,
-              TERM: 'xterm-256color',
-              COLORTERM: 'truecolor',
-              // Ensure proper locale for UTF-8 support (GUI apps may not inherit LANG)
-              LANG: process.env.LANG || 'en_US.UTF-8',
-              LC_ALL: process.env.LC_ALL || process.env.LANG || 'en_US.UTF-8',
-            } as Record<string, string>,
+            env: createTerminalEnv(options.env),
           });
           shell = fallbackShell;
           args = fallbackArgs;

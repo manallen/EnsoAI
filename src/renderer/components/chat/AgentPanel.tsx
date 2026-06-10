@@ -25,6 +25,11 @@ import { useCodeReviewContinueStore } from '@/stores/codeReviewContinue';
 import { BUILTIN_AGENT_IDS, useSettingsStore } from '@/stores/settings';
 import { useTerminalStore } from '@/stores/terminal';
 import { useWorktreeActivityStore } from '@/stores/worktreeActivity';
+import {
+  AgentCreateCountInput,
+  clampAgentCreateCount,
+  DEFAULT_AGENT_CREATE_COUNT,
+} from './AgentCreateCountInput';
 import { AgentGroup } from './AgentGroup';
 import { AgentTerminal } from './AgentTerminal';
 import { EnhancedInputContainer } from './EnhancedInputContainer';
@@ -276,7 +281,7 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
     setHasRunningProcess(!!currentQuickTerminalSession);
   }, [currentQuickTerminalSession]);
 
-  // Global session IDs to keep terminals mounted across group moves
+  // Global session IDs to keep terminals mounted across group moves.
   const [globalSessionIds, setGlobalSessionIds] = useState<Set<string>>(new Set());
 
   // Track StatusLine height per group to avoid cross-column races.
@@ -467,6 +472,7 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
 
   // Empty state agent menu
   const [showAgentMenu, setShowAgentMenu] = useState(false);
+  const [agentCreateCount, setAgentCreateCount] = useState(DEFAULT_AGENT_CREATE_COUNT);
   const [installedAgents, setInstalledAgents] = useState<Set<string>>(new Set());
 
   // Build installed agents set from persisted detection status
@@ -947,8 +953,12 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
       const session = useAgentSessionsStore.getState().sessions.find((s) => s.id === id);
       if (!session) return;
 
-      // Update initialized state and clear pendingCommand (prompt is passed via CLI arg)
-      updateSession(id, { initialized: true, pendingCommand: undefined });
+      // Update initialized state and clear transient activation flags.
+      updateSession(id, {
+        initialized: true,
+        pendingCommand: undefined,
+        startImmediately: undefined,
+      });
     },
     [updateSession]
   );
@@ -1003,8 +1013,8 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
     [groups, updateCurrentGroupState, updateSession]
   );
 
-  const handleNewSessionWithAgent = useCallback(
-    (agentId: string, agentCommand: string, targetGroupId?: string) => {
+  const createAgentSessionWithAgent = useCallback(
+    (agentId: string, agentCommand: string): Session => {
       // Handle Hapi and Happy agent IDs
       const isHapi = agentId.endsWith('-hapi');
       const isHappy = agentId.endsWith('-happy');
@@ -1024,7 +1034,7 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
       const customArgs = agentConfig?.customArgs;
 
       const id = crypto.randomUUID();
-      const newSession: Session = {
+      return {
         id,
         sessionId: id, // Initialize sessionId with same value as id
         name,
@@ -1036,28 +1046,46 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
         repoPath,
         cwd,
         environment,
+        startImmediately: true,
       };
+    },
+    [agentSettings, customAgents, cwd, repoPath]
+  );
 
-      addSession(newSession);
+  const handleNewSessionWithAgent = useCallback(
+    (agentId: string, agentCommand: string, targetGroupId?: string, count = 1) => {
+      const safeCount = clampAgentCreateCount(count);
+      const newSessions = Array.from({ length: safeCount }, () =>
+        createAgentSessionWithAgent(agentId, agentCommand)
+      );
 
-      // Auto open enhanced input for new Claude session if enabled
-      const autoPopupMode = claudeCodeIntegration.enhancedInputAutoPopup;
-      if (
-        baseId === 'claude' &&
-        claudeCodeIntegration.enhancedInputEnabled &&
-        (autoPopupMode === 'always' || autoPopupMode === 'hideWhileRunning')
-      ) {
-        setEnhancedInputOpen(newSession.id, true);
+      for (const session of newSessions) {
+        addSession(session);
+
+        const baseId = agentId.endsWith('-hapi')
+          ? agentId.slice(0, -5)
+          : agentId.endsWith('-happy')
+            ? agentId.slice(0, -6)
+            : agentId;
+        const autoPopupMode = claudeCodeIntegration.enhancedInputAutoPopup;
+        if (
+          baseId === 'claude' &&
+          claudeCodeIntegration.enhancedInputEnabled &&
+          (autoPopupMode === 'always' || autoPopupMode === 'hideWhileRunning')
+        ) {
+          setEnhancedInputOpen(session.id, true);
+        }
       }
 
       // Add to target group or active group
       updateCurrentGroupState((state) => {
         const groupId = targetGroupId || state.activeGroupId || state.groups[0]?.id;
         if (!groupId) {
+          const activeSessionId = newSessions[newSessions.length - 1]?.id;
           const newGroup: AgentGroupType = {
             id: crypto.randomUUID(),
-            sessionIds: [newSession.id],
-            activeSessionId: newSession.id,
+            sessionIds: newSessions.map((session) => session.id),
+            activeSessionId,
           };
           return {
             groups: [newGroup],
@@ -1072,21 +1100,26 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
             g.id === groupId
               ? {
                   ...g,
-                  sessionIds: [...g.sessionIds, newSession.id],
-                  activeSessionId: newSession.id,
+                  sessionIds: [...g.sessionIds, ...newSessions.map((session) => session.id)],
+                  activeSessionId: newSessions[newSessions.length - 1]?.id ?? g.activeSessionId,
                 }
               : g
           ),
         };
       });
+
+      const activeSessionId = newSessions[newSessions.length - 1]?.id;
+      if (activeSessionId) {
+        setActiveId(repoPath, cwd, activeSessionId);
+      }
     },
     [
-      repoPath,
-      cwd,
-      customAgents,
-      agentSettings,
+      createAgentSessionWithAgent,
       addSession,
       updateCurrentGroupState,
+      setActiveId,
+      repoPath,
+      cwd,
       claudeCodeIntegration.enhancedInputEnabled,
       claudeCodeIntegration.enhancedInputAutoPopup,
       setEnhancedInputOpen,
@@ -1364,19 +1397,17 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
     }
   }, [repoPath, cwd, currentWorktreeSessions, worktreeGroupStates, setGroupState]);
 
-  // Maintain global session IDs - include ALL sessions across all repos
-  // This ensures terminals stay mounted when switching between repos
+  // Maintain global session IDs - include ALL sessions across all repos.
+  // This keeps terminal components mounted; unmounting destroys the PTY.
   useEffect(() => {
     const allSessionIds = allSessions.map((s) => s.id);
     const allSessionIdSet = new Set(allSessionIds);
 
     setGlobalSessionIds((prev) => {
       const next = new Set(prev);
-      // Add new sessions
       for (const id of allSessionIds) {
         next.add(id);
       }
-      // Remove sessions that no longer exist
       for (const id of next) {
         if (!allSessionIdSet.has(id)) {
           next.delete(id);
@@ -1547,24 +1578,31 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
               {showAgentMenu && enabledAgents.length > 0 && (
                 <div className="absolute left-0 top-full pt-1 z-50 min-w-40 text-left">
                   <div className="rounded-lg border bg-popover p-1 shadow-lg">
-                    <div className="flex items-center justify-between px-2 py-1">
+                    <div className="flex items-center justify-between gap-2 px-2 py-1">
                       <span className="text-xs text-muted-foreground">{t('Select Agent')}</span>
-                      <Tooltip>
-                        <TooltipTrigger render={<span />}>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setShowAgentMenu(false);
-                              window.dispatchEvent(new CustomEvent('open-settings-agent'));
-                            }}
-                            className="flex h-5 w-5 shrink-0 items-center justify-center rounded text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
-                          >
-                            <Settings className="h-3.5 w-3.5" />
-                          </button>
-                        </TooltipTrigger>
-                        <TooltipPopup side="right">{t('Manage Agents')}</TooltipPopup>
-                      </Tooltip>
+                      <div className="flex shrink-0 items-center gap-1">
+                        <AgentCreateCountInput
+                          ariaLabel={t('Agent count')}
+                          value={agentCreateCount}
+                          onChange={setAgentCreateCount}
+                        />
+                        <Tooltip>
+                          <TooltipTrigger render={<span />}>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setShowAgentMenu(false);
+                                window.dispatchEvent(new CustomEvent('open-settings-agent'));
+                              }}
+                              className="flex h-5 w-5 shrink-0 items-center justify-center rounded text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+                            >
+                              <Settings className="h-3.5 w-3.5" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipPopup side="right">{t('Manage Agents')}</TooltipPopup>
+                        </Tooltip>
+                      </div>
                     </div>
                     {[...enabledAgents]
                       .sort((a, b) => {
@@ -1595,7 +1633,9 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
                             onClick={() => {
                               handleNewSessionWithAgent(
                                 agentId,
-                                customAgent?.command ?? AGENT_INFO[baseId]?.command ?? 'claude'
+                                customAgent?.command ?? AGENT_INFO[baseId]?.command ?? 'claude',
+                                undefined,
+                                agentCreateCount
                               );
                               setShowAgentMenu(false);
                             }}
@@ -1705,7 +1745,7 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
                 initialized={session.initialized}
                 activated={session.activated}
                 isActive={isTerminalActive}
-                hasPendingCommand={!!session.pendingCommand}
+                hasPendingCommand={!!session.pendingCommand || !!session.startImmediately}
                 initialPrompt={session.pendingCommand}
                 onInitialized={() => handleInitialized(sessionId)}
                 onActivated={() => handleActivated(sessionId)}
@@ -1774,12 +1814,14 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
               onSessionSelect={(id) => handleSelectSession(id, group.id)}
               onSessionClose={(id) => handleCloseSession(id, group.id)}
               onSessionNew={() => handleNewSession(group.id)}
-              onSessionNewWithAgent={(agentId, cmd) =>
-                handleNewSessionWithAgent(agentId, cmd, group.id)
+              onSessionNewWithAgent={(agentId, cmd, count) =>
+                handleNewSessionWithAgent(agentId, cmd, group.id, count)
               }
               onSessionRename={handleRenameSession}
               onSessionReorder={(from, to) => handleReorderSessions(group.id, from, to)}
               onGroupClick={() => handleGroupClick(group.id)}
+              agentCreateCount={agentCreateCount}
+              onAgentCreateCountChange={setAgentCreateCount}
               quickTerminalOpen={quickTerminalOpen}
               quickTerminalHasProcess={hasRunningProcess}
               onToggleQuickTerminal={quickTerminalEnabled ? handleToggleQuickTerminal : undefined}

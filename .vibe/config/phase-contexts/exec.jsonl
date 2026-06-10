@@ -1,0 +1,10 @@
+{"file":"context/global.md","reason":"项目技术栈和约定","required":true}
+{"file":"needs/{req}/prd.summary.md","reason":"执行任务默认使用的产品摘要","required":false,"when_missing":"warn"}
+{"file":"needs/{req}/tech-spec.summary.md","reason":"执行任务默认使用的技术方案摘要","required":false,"when_missing":"warn"}
+{"file":"needs/{req}/plan.summary.md","reason":"执行任务默认使用的任务摘要","required":false,"when_missing":"warn"}
+{"file":"needs/{req}/requirements.md","reason":"compat fallback 约束摘要","required":false,"when_missing":"skip"}
+{"file":"needs/{req}/DESIGN.summary.md","reason":"需求级设计覆盖摘要（support only）","required":false,"when_missing":"skip"}
+{"file":"design/tokens/design-tokens.json","reason":"前端实现时优先使用的轻量设计令牌（token-first support）","required":false,"when_missing":"skip"}
+{"file":"design/DESIGN.summary.md","reason":"项目级设计系统摘要（support only）","required":false,"when_missing":"skip"}
+{"file":"needs/{req}/context.md","reason":"需求级 `## 执行备注` section（support only，非整份 history）","required":false,"when_missing":"skip"}
+{"glob":"memory/decisions/*.md","reason":"相关技术决策记忆","required":false,"match":"by_tag","source_index":"memory/MEMORY-INDEX.md"}

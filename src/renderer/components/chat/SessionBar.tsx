@@ -25,6 +25,7 @@ import {
 } from '@/lib/claudeProvider';
 import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/stores/settings';
+import { AgentCreateCountInput } from './AgentCreateCountInput';
 
 const STORAGE_KEY = 'enso-session-bar';
 const EDGE_THRESHOLD = 20; // pixels from edge
@@ -46,6 +47,7 @@ export interface Session {
   terminalTitle?: string; // current terminal title from OSC escape sequence
   userRenamed?: boolean; // true when user has manually renamed this session
   pendingCommand?: string; // command to send after agent is ready (e.g., from todo task)
+  startImmediately?: boolean; // transient: start PTY even when this tab is not currently visible
 }
 
 interface SessionBarProps {
@@ -54,9 +56,11 @@ interface SessionBarProps {
   onSelectSession: (id: string) => void;
   onCloseSession: (id: string) => void;
   onNewSession: () => void;
-  onNewSessionWithAgent?: (agentId: string, agentCommand: string) => void;
+  onNewSessionWithAgent?: (agentId: string, agentCommand: string, count?: number) => void;
   onRenameSession: (id: string, name: string) => void;
   onReorderSessions?: (fromIndex: number, toIndex: number) => void;
+  agentCreateCount?: number;
+  onAgentCreateCountChange?: (value: number) => void;
   // Quick Terminal props
   quickTerminalOpen?: boolean;
   quickTerminalHasProcess?: boolean;
@@ -459,6 +463,8 @@ export function SessionBar({
   onNewSessionWithAgent,
   onRenameSession,
   onReorderSessions,
+  agentCreateCount,
+  onAgentCreateCountChange,
   quickTerminalOpen,
   quickTerminalHasProcess,
   onToggleQuickTerminal,
@@ -797,10 +803,10 @@ export function SessionBar({
         ? { name: customAgent.name, command: customAgent.command }
         : AGENT_INFO[baseId] || { name: 'Claude', command: 'claude' };
 
-      onNewSessionWithAgent?.(agentId, info.command);
+      onNewSessionWithAgent?.(agentId, info.command, agentCreateCount);
       setShowAgentMenu(false);
     },
-    [customAgents, onNewSessionWithAgent]
+    [agentCreateCount, customAgents, onNewSessionWithAgent]
   );
 
   return (
@@ -905,24 +911,33 @@ export function SessionBar({
                   )}
                 >
                   <div className="rounded-lg border bg-popover p-1 shadow-lg">
-                    <div className="flex items-center justify-between px-2 py-1">
+                    <div className="flex items-center justify-between gap-2 px-2 py-1">
                       <span className="text-xs text-muted-foreground">{t('Select Agent')}</span>
-                      <Tooltip>
-                        <TooltipTrigger render={<span />}>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setShowAgentMenu(false);
-                              window.dispatchEvent(new CustomEvent('open-settings-agent'));
-                            }}
-                            className="flex h-5 w-5 shrink-0 items-center justify-center rounded text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
-                          >
-                            <Settings className="h-3.5 w-3.5" />
-                          </button>
-                        </TooltipTrigger>
-                        <TooltipPopup side="right">{t('Manage Agents')}</TooltipPopup>
-                      </Tooltip>
+                      <div className="flex shrink-0 items-center gap-1">
+                        {agentCreateCount !== undefined && onAgentCreateCountChange && (
+                          <AgentCreateCountInput
+                            ariaLabel={t('Agent count')}
+                            value={agentCreateCount}
+                            onChange={onAgentCreateCountChange}
+                          />
+                        )}
+                        <Tooltip>
+                          <TooltipTrigger render={<span />}>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setShowAgentMenu(false);
+                                window.dispatchEvent(new CustomEvent('open-settings-agent'));
+                              }}
+                              className="flex h-5 w-5 shrink-0 items-center justify-center rounded text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+                            >
+                              <Settings className="h-3.5 w-3.5" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipPopup side="right">{t('Manage Agents')}</TooltipPopup>
+                        </Tooltip>
+                      </div>
                     </div>
                     {[...enabledAgents]
                       .sort((a, b) => {

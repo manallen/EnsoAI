@@ -935,6 +935,7 @@ const electronAPI = {
       ipcRenderer.invoke(IPC_CHANNELS.HAPI_CHECK_GLOBAL, forceRefresh),
     start: (config: {
       webappPort: number;
+      webappHost: string;
       cliApiToken: string;
       telegramBotToken: string;
       webappUrl: string;
@@ -951,6 +952,7 @@ const electronAPI = {
       ipcRenderer.invoke(IPC_CHANNELS.HAPI_STOP),
     restart: (config: {
       webappPort: number;
+      webappHost: string;
       cliApiToken: string;
       telegramBotToken: string;
       webappUrl: string;

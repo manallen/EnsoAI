@@ -1,0 +1,2751 @@
+{
+  "app_logs_tail": [
+    "DevTools listening on ws://127.0.0.1:19317/devtools/browser/fe2f9488-43fd-4701-b1e6-4fdfa1559b84",
+    "[files] Cleaned up temp directory: /var/folders/jm/79pg7m0j67j1t6j40v9_rm4w0000gn/T/ensoai-input",
+    "08:54:57.398 › Shared state paths {",
+    "  root: '/Users/zlb/.ensoai',",
+    "  settingsPath: '/Users/zlb/.ensoai/settings.json',",
+    "  sessionPath: '/Users/zlb/.ensoai/session-state.json',",
+    "  settingsMarkerPath: '/Users/zlb/.ensoai/.local-settings-migrated',",
+    "  todoMarkerPath: '/Users/zlb/.ensoai/.local-todo-migrated',",
+    "  localStorageMarkerPath: '/Users/zlb/.ensoai/.local-localstorage-migrated'",
+    "}",
+    "[08:54:57.409] [info]  EnsoAI started",
+    "[08:54:57.498] [info]  [ClaudeProviderManager] Started watching /Users/zlb/.claude/settings.json",
+    "[08:54:57.515] [info]  [TodoService] Database initialized at /Users/zlb/Library/Application Support/enso-ai-dev/todo.db",
+    "[08:54:57.641] [error] [WebInspector] Server error: Error: listen EADDRINUSE: address already in use 127.0.0.1:18765",
+    "    at Server.setupListenHandle [as _listen2] (node:net:1940:16)",
+    "    at listenInCluster (node:net:1997:12)",
+    "    at node:net:2206:7",
+    "    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+    "[50711:0608/085457.725945:INFO:CONSOLE:2877] \"08:54:57.641 › [WebInspector] Server error: Error: listen EADDRINUSE: address already in use 127.0.0.1:18765",
+    "    at Server.setupListenHandle [as _listen2] (node:net:1940:16)",
+    "    at listenInCluster (node:net:1997:12)",
+    "    at node:net:2206:7",
+    "    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\", source: file:///Users/zlb/Code/2026code/EnsoAI/out/renderer/assets/index-h2cWMXtL.js (2877)",
+    "[08:54:57.726] [info]  Skip checkForUpdates because application is not packed and dev update config is not forced",
+    "[50711:0608/085457.727064:INFO:CONSOLE:2877] \"08:54:57.726 › Skip checkForUpdates because application is not packed and dev update config is not forced\", source: file:///Users/zlb/Code/2026code/EnsoAI/out/renderer/assets/index-h2cWMXtL.js (2877)",
+    "[08:55:00.503] [info]  Skip checkForUpdates because application is not packed and dev update config is not forced",
+    "[50711:0608/085500.504636:INFO:CONSOLE:2877] \"08:55:00.503 › Skip checkForUpdates because application is not packed and dev update config is not forced\", source: file:///Users/zlb/Code/2026code/EnsoAI/out/renderer/assets/index-h2cWMXtL.js (2877)"
+  ],
+  "codex_version": "codex-cli 0.137.0",
+  "command_template": "codex 'exec' '--skip-git-repo-check' '--ephemeral' '--sandbox' 'read-only' '--color' 'never' '-C' '/Users/zlb/Code/2026code/EnsoAI' '--model' 'gpt-5.5' 'Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.'",
+  "counts": [
+    10,
+    20,
+    30
+  ],
+  "cpu_count": 10,
+  "cpu_model": "Apple M5",
+  "cwd": "/Users/zlb/Code/2026code/EnsoAI",
+  "electron_command": [
+    "/Users/zlb/Code/2026code/EnsoAI/node_modules/.bin/electron",
+    "--remote-debugging-port=19317",
+    "."
+  ],
+  "free_memory_mib": 152,
+  "generated_at": "2026-06-08T00:54:57.615Z",
+  "groups": [
+    {
+      "metrics_after": {
+        "counters": {
+          "activityChecks": 0,
+          "attach": 10,
+          "create": 10,
+          "dataBytes": 9199,
+          "dataEvents": 111,
+          "detach": 0,
+          "exit": 10,
+          "kill": 10,
+          "resize": 0,
+          "state": 0,
+          "writeBytes": 0,
+          "writes": 0
+        },
+        "generatedAt": 1780880128446,
+        "sessionCounts": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        }
+      },
+      "metrics_before": {
+        "counters": {
+          "activityChecks": 0,
+          "attach": 0,
+          "create": 0,
+          "dataBytes": 0,
+          "dataEvents": 0,
+          "detach": 0,
+          "exit": 0,
+          "kill": 0,
+          "resize": 0,
+          "state": 0,
+          "writeBytes": 0,
+          "writes": 0
+        },
+        "generatedAt": 1780880097777,
+        "sessionCounts": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        }
+      },
+      "process_samples": [
+        {
+          "cpu_percent": 296.6,
+          "pid_count": 75,
+          "rss_bytes": 1487290368,
+          "elapsed_ms": 1194
+        },
+        {
+          "cpu_percent": 212.2,
+          "pid_count": 116,
+          "rss_bytes": 2343370752,
+          "elapsed_ms": 2240
+        },
+        {
+          "cpu_percent": 269.3,
+          "pid_count": 153,
+          "rss_bytes": 3375218688,
+          "elapsed_ms": 3390
+        },
+        {
+          "cpu_percent": 367.9,
+          "pid_count": 187,
+          "rss_bytes": 4203724800,
+          "elapsed_ms": 4221
+        },
+        {
+          "cpu_percent": 285.5,
+          "pid_count": 169,
+          "rss_bytes": 4374413312,
+          "elapsed_ms": 5267
+        },
+        {
+          "cpu_percent": 104.4,
+          "pid_count": 156,
+          "rss_bytes": 4236509184,
+          "elapsed_ms": 6601
+        },
+        {
+          "cpu_percent": 185.6,
+          "pid_count": 158,
+          "rss_bytes": 4350099456,
+          "elapsed_ms": 7211
+        },
+        {
+          "cpu_percent": 207.7,
+          "pid_count": 128,
+          "rss_bytes": 4291330048,
+          "elapsed_ms": 8244
+        },
+        {
+          "cpu_percent": 260.2,
+          "pid_count": 129,
+          "rss_bytes": 4860854272,
+          "elapsed_ms": 10138
+        },
+        {
+          "cpu_percent": 137.3,
+          "pid_count": 133,
+          "rss_bytes": 4593811456,
+          "elapsed_ms": 10410
+        },
+        {
+          "cpu_percent": 371.9,
+          "pid_count": 155,
+          "rss_bytes": 5713969152,
+          "elapsed_ms": 11080
+        },
+        {
+          "cpu_percent": 350.5,
+          "pid_count": 168,
+          "rss_bytes": 6286819328,
+          "elapsed_ms": 12063
+        },
+        {
+          "cpu_percent": 515.8,
+          "pid_count": 144,
+          "rss_bytes": 6545473536,
+          "elapsed_ms": 13069
+        },
+        {
+          "cpu_percent": 230.1,
+          "pid_count": 134,
+          "rss_bytes": 5763825664,
+          "elapsed_ms": 14746
+        },
+        {
+          "cpu_percent": 142.4,
+          "pid_count": 131,
+          "rss_bytes": 5385125888,
+          "elapsed_ms": 15372
+        },
+        {
+          "cpu_percent": 420.3,
+          "pid_count": 130,
+          "rss_bytes": 5649760256,
+          "elapsed_ms": 16145
+        },
+        {
+          "cpu_percent": 658.6,
+          "pid_count": 131,
+          "rss_bytes": 6080282624,
+          "elapsed_ms": 17082
+        },
+        {
+          "cpu_percent": 731.5,
+          "pid_count": 129,
+          "rss_bytes": 6491209728,
+          "elapsed_ms": 18084
+        },
+        {
+          "cpu_percent": 772.5,
+          "pid_count": 130,
+          "rss_bytes": 6771933184,
+          "elapsed_ms": 19081
+        },
+        {
+          "cpu_percent": 547.3,
+          "pid_count": 133,
+          "rss_bytes": 7114571776,
+          "elapsed_ms": 20081
+        },
+        {
+          "cpu_percent": 304.4,
+          "pid_count": 145,
+          "rss_bytes": 7321534464,
+          "elapsed_ms": 21091
+        },
+        {
+          "cpu_percent": 27.3,
+          "pid_count": 145,
+          "rss_bytes": 7431520256,
+          "elapsed_ms": 22104
+        },
+        {
+          "cpu_percent": 32.9,
+          "pid_count": 147,
+          "rss_bytes": 6886719488,
+          "elapsed_ms": 23088
+        },
+        {
+          "cpu_percent": 66.2,
+          "pid_count": 116,
+          "rss_bytes": 5219401728,
+          "elapsed_ms": 24081
+        },
+        {
+          "cpu_percent": 169.9,
+          "pid_count": 94,
+          "rss_bytes": 3377053696,
+          "elapsed_ms": 25081
+        },
+        {
+          "cpu_percent": 110.4,
+          "pid_count": 75,
+          "rss_bytes": 2651504640,
+          "elapsed_ms": 26103
+        },
+        {
+          "cpu_percent": 153.7,
+          "pid_count": 63,
+          "rss_bytes": 2694725632,
+          "elapsed_ms": 27084
+        },
+        {
+          "cpu_percent": 12.3,
+          "pid_count": 37,
+          "rss_bytes": 1203798016,
+          "elapsed_ms": 28079
+        },
+        {
+          "cpu_percent": 88.4,
+          "pid_count": 25,
+          "rss_bytes": 563773440,
+          "elapsed_ms": 29082
+        },
+        {
+          "cpu_percent": 35.1,
+          "pid_count": 5,
+          "rss_bytes": 415989760,
+          "elapsed_ms": 30075
+        },
+        {
+          "cpu_percent": 8.1,
+          "pid_count": 5,
+          "rss_bytes": 416104448,
+          "elapsed_ms": 31076
+        }
+      ],
+      "results": [
+        {
+          "bytes": 698,
+          "done": true,
+          "done_at": 29606,
+          "exit_code": 0,
+          "first_output_ms": 1101,
+          "index": 0,
+          "marker": "__ENSO_BENCHMARK_DONE_10_0__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c385-7bc2-8856-409afe6c552a\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n207\r\n\r\n__ENSO_BENCHMARK_DONE_10_0__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:27 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4b9-c385-7bc2-8856-409afe6c552a -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 207 __ENSO_BENCHMARK_DONE_10_0__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-1",
+          "started_at": 285.10000002384186,
+          "timed_out": false,
+          "duration_ms": 29321
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 25776.100000023842,
+          "exit_code": 0,
+          "first_output_ms": 1555,
+          "index": 1,
+          "marker": "__ENSO_BENCHMARK_DONE_10_1__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c3b3-78b0-b929-328ef4e13791\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,829\r\n\r\n__ENSO_BENCHMARK_DONE_10_1__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:23 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4b9-c3b3-78b0-b929-328ef4e13791 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 26,829 __ENSO_BENCHMARK_DONE_10_1__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-2",
+          "started_at": 526.6000000238419,
+          "timed_out": false,
+          "duration_ms": 25250
+        },
+        {
+          "bytes": 2724,
+          "done": true,
+          "done_at": 26507.600000023842,
+          "exit_code": 0,
+          "first_output_ms": 994,
+          "index": 2,
+          "marker": "__ENSO_BENCHMARK_DONE_10_2__",
+          "marker_buffer": "rror 2)\r\n2026-06-08T00:54:59.108683Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/plugin-creator/references: No such file or directory (os error 2)\r\n2026-06-08T00:54:59.108708Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/plugin-creator/agents: No such file or directory (os error 2)\r\n2026-06-08T00:54:59.108736Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/plugin-creator/scripts: No such file or directory (os error 2)\r\n2026-06-08T00:54:59.108769Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/plugin-creator/assets: No such file or directory (os error 2)\r\n2026-06-08T00:54:59.108833Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/agents: No such file or directory (os error 2)\r\n2026-06-08T00:54:59.108955Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/scripts: No such file or directory (os error 2)\r\n2026-06-08T00:54:59.109179Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c49a-7603-b611-b02b83d5969b\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,825\r\n\r\n__ENSO_BENCHMARK_DONE_10_2__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:23 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:54:59.108525Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-creator/references: No such file or directory (os error 2) 2026-06-08T00:54:59.108588Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-creator/agents: No such file or directory (os error 2) 2026-06-08T00:54:59.108619Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-creator/...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-3",
+          "started_at": 637.8999999761581,
+          "timed_out": false,
+          "duration_ms": 25870
+        },
+        {
+          "bytes": 1058,
+          "done": true,
+          "done_at": 29819.800000071526,
+          "exit_code": 0,
+          "first_output_ms": 791,
+          "index": 3,
+          "marker": "__ENSO_BENCHMARK_DONE_10_3__",
+          "marker_buffer": "2026-06-08T00:54:59.008643Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/plugin-creator/assets: No such file or directory (os error 2)\r\n2026-06-08T00:54:59.009932Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c49a-7fd0-b1a9-028475fce10e\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n11,731\r\n\r\n__ENSO_BENCHMARK_DONE_10_3__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:27 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:54:59.008643Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/plugin-creator/assets: No such file or directory (os error 2) 2026-06-08T00:54:59.009932Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs: No such file or directory (os error 2)OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoni...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-4",
+          "started_at": 741.7000000476837,
+          "timed_out": false,
+          "duration_ms": 29078
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 27412.700000047684,
+          "exit_code": 0,
+          "first_output_ms": 2764,
+          "index": 4,
+          "marker": "__ENSO_BENCHMARK_DONE_10_4__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c523-7831-bd79-6d08b864831a\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n11,753\r\n\r\n__ENSO_BENCHMARK_DONE_10_4__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:24 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4b9-c523-7831-bd79-6d08b864831a -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 11,753 __ENSO_BENCHMARK_DONE_10_4__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-5",
+          "started_at": 844.3999999761581,
+          "timed_out": false,
+          "duration_ms": 26568
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 26616.899999976158,
+          "exit_code": 0,
+          "first_output_ms": 3106,
+          "index": 5,
+          "marker": "__ENSO_BENCHMARK_DONE_10_5__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c52e-7fe1-8441-76e4a74dc51c\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,852\r\n\r\n__ENSO_BENCHMARK_DONE_10_5__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:24 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4b9-c52e-7fe1-8441-76e4a74dc51c -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 26,852 __ENSO_BENCHMARK_DONE_10_5__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-6",
+          "started_at": 946.8999999761581,
+          "timed_out": false,
+          "duration_ms": 25670
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 28135.5,
+          "exit_code": 0,
+          "first_output_ms": 7751,
+          "index": 6,
+          "marker": "__ENSO_BENCHMARK_DONE_10_6__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c6d5-7681-b340-6a7d32c1604a\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,853\r\n\r\n__ENSO_BENCHMARK_DONE_10_6__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:25 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4b9-c6d5-7681-b340-6a7d32c1604a -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 26,853 __ENSO_BENCHMARK_DONE_10_6__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-7",
+          "started_at": 1049.7000000476837,
+          "timed_out": false,
+          "duration_ms": 27086
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 27463.300000071526,
+          "exit_code": 0,
+          "first_output_ms": 5651,
+          "index": 7,
+          "marker": "__ENSO_BENCHMARK_DONE_10_7__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c628-72c0-b4dd-fa407f7c435b\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,854\r\n\r\n__ENSO_BENCHMARK_DONE_10_7__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:24 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4b9-c628-72c0-b4dd-fa407f7c435b -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 26,854 __ENSO_BENCHMARK_DONE_10_7__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-8",
+          "started_at": 1151.7000000476837,
+          "timed_out": false,
+          "duration_ms": 26312
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 27620.300000071526,
+          "exit_code": 0,
+          "first_output_ms": 9459,
+          "index": 8,
+          "marker": "__ENSO_BENCHMARK_DONE_10_8__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-c884-72f1-884f-4912cd2eebbe\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,852\r\n\r\n__ENSO_BENCHMARK_DONE_10_8__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:55:25 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4b9-c884-72f1-884f-4912cd2eebbe -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 26,852 __ENSO_BENCHMARK_DONE_10_8__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-9",
+          "started_at": 1255.2000000476837,
+          "timed_out": false,
+          "duration_ms": 26365
+        },
+        {
+          "bytes": 513,
+          "done": true,
+          "done_at": 29029.700000047684,
+          "exit_code": 0,
+          "first_output_ms": 9567,
+          "index": 9,
+          "marker": "__ENSO_BENCHMARK_DONE_10_9__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4b9-cb34-7ea2-a257-45dbe1003619\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,851\r\n\r\n__ENSO_BENCHMARK_DONE_10_9__:0\r\n",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4b9-cb34-7ea2-a257-45dbe1003619 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 26,851 __ENSO_BENCHMARK_DONE_10_9__:0",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-10",
+          "started_at": 1360.6000000238419,
+          "timed_out": false,
+          "duration_ms": 27669
+        }
+      ],
+      "summary": {
+        "app_process": {
+          "avg_total_rss_mib": 4248.5,
+          "max_pid_count": 187,
+          "peak_total_cpu_percent": 772.5,
+          "peak_total_rss_mib": 7087.3
+        },
+        "avg_duration_ms": 26919,
+        "count": 10,
+        "data_bytes": 9199,
+        "data_events": 111,
+        "duration_p50_ms": 26365,
+        "duration_p95_ms": 29321,
+        "failed": 0,
+        "first_output_p50_ms": 2764,
+        "first_output_p95_ms": 9567,
+        "ok": 10,
+        "session_counts_after": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        },
+        "wall_ms": 29666
+      }
+    },
+    {
+      "metrics_after": {
+        "counters": {
+          "activityChecks": 0,
+          "attach": 20,
+          "create": 20,
+          "dataBytes": 14369,
+          "dataEvents": 214,
+          "detach": 0,
+          "exit": 20,
+          "kill": 20,
+          "resize": 0,
+          "state": 0,
+          "writeBytes": 0,
+          "writes": 0
+        },
+        "generatedAt": 1780880234458,
+        "sessionCounts": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        }
+      },
+      "metrics_before": {
+        "counters": {
+          "activityChecks": 0,
+          "attach": 0,
+          "create": 0,
+          "dataBytes": 0,
+          "dataEvents": 0,
+          "detach": 0,
+          "exit": 0,
+          "kill": 0,
+          "resize": 0,
+          "state": 0,
+          "writeBytes": 0,
+          "writes": 0
+        },
+        "generatedAt": 1780880129319,
+        "sessionCounts": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        }
+      },
+      "process_samples": [
+        {
+          "cpu_percent": 285,
+          "pid_count": 53,
+          "rss_bytes": 1458470912,
+          "elapsed_ms": 1055
+        },
+        {
+          "cpu_percent": 438.1,
+          "pid_count": 92,
+          "rss_bytes": 2511585280,
+          "elapsed_ms": 2033
+        },
+        {
+          "cpu_percent": 484.9,
+          "pid_count": 91,
+          "rss_bytes": 3200286720,
+          "elapsed_ms": 3048
+        },
+        {
+          "cpu_percent": 538.4,
+          "pid_count": 110,
+          "rss_bytes": 3738025984,
+          "elapsed_ms": 4050
+        },
+        {
+          "cpu_percent": 541.3,
+          "pid_count": 109,
+          "rss_bytes": 4540317696,
+          "elapsed_ms": 5052
+        },
+        {
+          "cpu_percent": 556.8,
+          "pid_count": 142,
+          "rss_bytes": 5491228672,
+          "elapsed_ms": 6038
+        },
+        {
+          "cpu_percent": 525.4,
+          "pid_count": 133,
+          "rss_bytes": 6014517248,
+          "elapsed_ms": 7056
+        },
+        {
+          "cpu_percent": 729.4,
+          "pid_count": 124,
+          "rss_bytes": 6254493696,
+          "elapsed_ms": 8045
+        },
+        {
+          "cpu_percent": 676.2,
+          "pid_count": 111,
+          "rss_bytes": 6492356608,
+          "elapsed_ms": 9050
+        },
+        {
+          "cpu_percent": 621.6,
+          "pid_count": 101,
+          "rss_bytes": 6542884864,
+          "elapsed_ms": 10055
+        },
+        {
+          "cpu_percent": 477.5,
+          "pid_count": 124,
+          "rss_bytes": 6777585664,
+          "elapsed_ms": 11070
+        },
+        {
+          "cpu_percent": 573.3,
+          "pid_count": 154,
+          "rss_bytes": 7287013376,
+          "elapsed_ms": 12057
+        },
+        {
+          "cpu_percent": 423.3,
+          "pid_count": 158,
+          "rss_bytes": 7272415232,
+          "elapsed_ms": 13057
+        },
+        {
+          "cpu_percent": 485.7,
+          "pid_count": 173,
+          "rss_bytes": 6929367040,
+          "elapsed_ms": 14107
+        },
+        {
+          "cpu_percent": 470.5,
+          "pid_count": 193,
+          "rss_bytes": 7134019584,
+          "elapsed_ms": 15125
+        },
+        {
+          "cpu_percent": 471.4,
+          "pid_count": 208,
+          "rss_bytes": 7151861760,
+          "elapsed_ms": 16103
+        },
+        {
+          "cpu_percent": 468.6,
+          "pid_count": 223,
+          "rss_bytes": 7291142144,
+          "elapsed_ms": 17077
+        },
+        {
+          "cpu_percent": 528.1,
+          "pid_count": 212,
+          "rss_bytes": 7313801216,
+          "elapsed_ms": 18131
+        },
+        {
+          "cpu_percent": 451.7,
+          "pid_count": 218,
+          "rss_bytes": 7244857344,
+          "elapsed_ms": 19068
+        },
+        {
+          "cpu_percent": 527.8,
+          "pid_count": 218,
+          "rss_bytes": 7524630528,
+          "elapsed_ms": 20113
+        },
+        {
+          "cpu_percent": 423.9,
+          "pid_count": 214,
+          "rss_bytes": 7403749376,
+          "elapsed_ms": 21073
+        },
+        {
+          "cpu_percent": 463.7,
+          "pid_count": 196,
+          "rss_bytes": 7265697792,
+          "elapsed_ms": 22081
+        },
+        {
+          "cpu_percent": 486.9,
+          "pid_count": 227,
+          "rss_bytes": 7577092096,
+          "elapsed_ms": 23142
+        },
+        {
+          "cpu_percent": 483.5,
+          "pid_count": 246,
+          "rss_bytes": 7683735552,
+          "elapsed_ms": 24152
+        },
+        {
+          "cpu_percent": 440.8,
+          "pid_count": 229,
+          "rss_bytes": 7651803136,
+          "elapsed_ms": 25149
+        },
+        {
+          "cpu_percent": 403.4,
+          "pid_count": 207,
+          "rss_bytes": 7268663296,
+          "elapsed_ms": 26214
+        },
+        {
+          "cpu_percent": 417,
+          "pid_count": 198,
+          "rss_bytes": 7116914688,
+          "elapsed_ms": 27217
+        },
+        {
+          "cpu_percent": 448.9,
+          "pid_count": 213,
+          "rss_bytes": 7516717056,
+          "elapsed_ms": 28125
+        },
+        {
+          "cpu_percent": 420.1,
+          "pid_count": 218,
+          "rss_bytes": 7362035712,
+          "elapsed_ms": 29327
+        },
+        {
+          "cpu_percent": 415,
+          "pid_count": 215,
+          "rss_bytes": 7483473920,
+          "elapsed_ms": 30525
+        },
+        {
+          "cpu_percent": 455.2,
+          "pid_count": 201,
+          "rss_bytes": 7288356864,
+          "elapsed_ms": 31106
+        },
+        {
+          "cpu_percent": 455.9,
+          "pid_count": 197,
+          "rss_bytes": 7677296640,
+          "elapsed_ms": 32110
+        },
+        {
+          "cpu_percent": 402.8,
+          "pid_count": 183,
+          "rss_bytes": 7608270848,
+          "elapsed_ms": 33152
+        },
+        {
+          "cpu_percent": 437.5,
+          "pid_count": 180,
+          "rss_bytes": 7341146112,
+          "elapsed_ms": 34180
+        },
+        {
+          "cpu_percent": 550.6,
+          "pid_count": 184,
+          "rss_bytes": 7780253696,
+          "elapsed_ms": 35145
+        },
+        {
+          "cpu_percent": 526.5,
+          "pid_count": 185,
+          "rss_bytes": 7549665280,
+          "elapsed_ms": 36171
+        },
+        {
+          "cpu_percent": 421.6,
+          "pid_count": 179,
+          "rss_bytes": 7264681984,
+          "elapsed_ms": 37108
+        },
+        {
+          "cpu_percent": 471.7,
+          "pid_count": 180,
+          "rss_bytes": 7559544832,
+          "elapsed_ms": 38099
+        },
+        {
+          "cpu_percent": 368.8,
+          "pid_count": 181,
+          "rss_bytes": 7436943360,
+          "elapsed_ms": 39137
+        },
+        {
+          "cpu_percent": 427.6,
+          "pid_count": 180,
+          "rss_bytes": 7490256896,
+          "elapsed_ms": 40165
+        },
+        {
+          "cpu_percent": 351,
+          "pid_count": 180,
+          "rss_bytes": 7453179904,
+          "elapsed_ms": 41126
+        },
+        {
+          "cpu_percent": 481,
+          "pid_count": 183,
+          "rss_bytes": 7641088000,
+          "elapsed_ms": 42205
+        },
+        {
+          "cpu_percent": 329.5,
+          "pid_count": 174,
+          "rss_bytes": 6785089536,
+          "elapsed_ms": 43156
+        },
+        {
+          "cpu_percent": 307.6,
+          "pid_count": 175,
+          "rss_bytes": 6670712832,
+          "elapsed_ms": 44137
+        },
+        {
+          "cpu_percent": 230.4,
+          "pid_count": 169,
+          "rss_bytes": 6381846528,
+          "elapsed_ms": 45243
+        },
+        {
+          "cpu_percent": 167,
+          "pid_count": 169,
+          "rss_bytes": 6140264448,
+          "elapsed_ms": 46219
+        },
+        {
+          "cpu_percent": 165,
+          "pid_count": 167,
+          "rss_bytes": 5730402304,
+          "elapsed_ms": 47132
+        },
+        {
+          "cpu_percent": 49,
+          "pid_count": 165,
+          "rss_bytes": 5314609152,
+          "elapsed_ms": 48134
+        },
+        {
+          "cpu_percent": 116.8,
+          "pid_count": 151,
+          "rss_bytes": 4344397824,
+          "elapsed_ms": 49137
+        },
+        {
+          "cpu_percent": 70.3,
+          "pid_count": 144,
+          "rss_bytes": 3838410752,
+          "elapsed_ms": 50150
+        },
+        {
+          "cpu_percent": 84.7,
+          "pid_count": 107,
+          "rss_bytes": 2505392128,
+          "elapsed_ms": 51149
+        },
+        {
+          "cpu_percent": 136.8,
+          "pid_count": 65,
+          "rss_bytes": 1648246784,
+          "elapsed_ms": 52141
+        },
+        {
+          "cpu_percent": 205.1,
+          "pid_count": 56,
+          "rss_bytes": 1484537856,
+          "elapsed_ms": 53141
+        },
+        {
+          "cpu_percent": 208.1,
+          "pid_count": 53,
+          "rss_bytes": 1018281984,
+          "elapsed_ms": 54147
+        },
+        {
+          "cpu_percent": 243.6,
+          "pid_count": 41,
+          "rss_bytes": 1089519616,
+          "elapsed_ms": 55154
+        },
+        {
+          "cpu_percent": 201.8,
+          "pid_count": 37,
+          "rss_bytes": 962527232,
+          "elapsed_ms": 56154
+        },
+        {
+          "cpu_percent": 104.6,
+          "pid_count": 31,
+          "rss_bytes": 630210560,
+          "elapsed_ms": 57140
+        },
+        {
+          "cpu_percent": 1.9,
+          "pid_count": 25,
+          "rss_bytes": 400834560,
+          "elapsed_ms": 58159
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 382369792,
+          "elapsed_ms": 59147
+        },
+        {
+          "cpu_percent": 0.1,
+          "pid_count": 25,
+          "rss_bytes": 379994112,
+          "elapsed_ms": 60169
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 370917376,
+          "elapsed_ms": 61263
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 363364352,
+          "elapsed_ms": 62181
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 361218048,
+          "elapsed_ms": 63160
+        },
+        {
+          "cpu_percent": 0.4,
+          "pid_count": 25,
+          "rss_bytes": 362020864,
+          "elapsed_ms": 64296
+        },
+        {
+          "cpu_percent": 3.3,
+          "pid_count": 25,
+          "rss_bytes": 365838336,
+          "elapsed_ms": 65265
+        },
+        {
+          "cpu_percent": 8.4,
+          "pid_count": 25,
+          "rss_bytes": 366346240,
+          "elapsed_ms": 66269
+        },
+        {
+          "cpu_percent": 0.1,
+          "pid_count": 25,
+          "rss_bytes": 358449152,
+          "elapsed_ms": 67240
+        },
+        {
+          "cpu_percent": 0.1,
+          "pid_count": 25,
+          "rss_bytes": 360464384,
+          "elapsed_ms": 68254
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 356548608,
+          "elapsed_ms": 69241
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 356974592,
+          "elapsed_ms": 70277
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 359874560,
+          "elapsed_ms": 71191
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 360988672,
+          "elapsed_ms": 72254
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 362954752,
+          "elapsed_ms": 73232
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 360873984,
+          "elapsed_ms": 74166
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 360251392,
+          "elapsed_ms": 75177
+        },
+        {
+          "cpu_percent": 0.1,
+          "pid_count": 25,
+          "rss_bytes": 362053632,
+          "elapsed_ms": 76253
+        },
+        {
+          "cpu_percent": 0.2,
+          "pid_count": 25,
+          "rss_bytes": 361037824,
+          "elapsed_ms": 77183
+        },
+        {
+          "cpu_percent": 0.6,
+          "pid_count": 25,
+          "rss_bytes": 362364928,
+          "elapsed_ms": 78206
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 351043584,
+          "elapsed_ms": 79290
+        },
+        {
+          "cpu_percent": 0.2,
+          "pid_count": 25,
+          "rss_bytes": 361529344,
+          "elapsed_ms": 80214
+        },
+        {
+          "cpu_percent": 0.4,
+          "pid_count": 25,
+          "rss_bytes": 364199936,
+          "elapsed_ms": 81205
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 351911936,
+          "elapsed_ms": 82282
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 358629376,
+          "elapsed_ms": 83224
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 352075776,
+          "elapsed_ms": 84349
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 361447424,
+          "elapsed_ms": 85280
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 361791488,
+          "elapsed_ms": 86242
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 349831168,
+          "elapsed_ms": 87249
+        },
+        {
+          "cpu_percent": 2.3,
+          "pid_count": 25,
+          "rss_bytes": 367853568,
+          "elapsed_ms": 88303
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 364544000,
+          "elapsed_ms": 89270
+        },
+        {
+          "cpu_percent": 0,
+          "pid_count": 25,
+          "rss_bytes": 363134976,
+          "elapsed_ms": 90251
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 362430464,
+          "elapsed_ms": 91345
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 365379584,
+          "elapsed_ms": 92367
+        },
+        {
+          "cpu_percent": 0.4,
+          "pid_count": 25,
+          "rss_bytes": 359055360,
+          "elapsed_ms": 93274
+        },
+        {
+          "cpu_percent": 0.1,
+          "pid_count": 25,
+          "rss_bytes": 357974016,
+          "elapsed_ms": 94330
+        },
+        {
+          "cpu_percent": 0.2,
+          "pid_count": 25,
+          "rss_bytes": 361250816,
+          "elapsed_ms": 95303
+        },
+        {
+          "cpu_percent": 0.6,
+          "pid_count": 25,
+          "rss_bytes": 363118592,
+          "elapsed_ms": 96346
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 361299968,
+          "elapsed_ms": 97344
+        },
+        {
+          "cpu_percent": 0.3,
+          "pid_count": 25,
+          "rss_bytes": 360038400,
+          "elapsed_ms": 98303
+        },
+        {
+          "cpu_percent": 0.1,
+          "pid_count": 25,
+          "rss_bytes": 360398848,
+          "elapsed_ms": 99308
+        },
+        {
+          "cpu_percent": 0.2,
+          "pid_count": 25,
+          "rss_bytes": 362545152,
+          "elapsed_ms": 100431
+        },
+        {
+          "cpu_percent": 0.7,
+          "pid_count": 25,
+          "rss_bytes": 361480192,
+          "elapsed_ms": 101433
+        },
+        {
+          "cpu_percent": 21.2,
+          "pid_count": 25,
+          "rss_bytes": 399228928,
+          "elapsed_ms": 102356
+        },
+        {
+          "cpu_percent": 9.3,
+          "pid_count": 26,
+          "rss_bytes": 392282112,
+          "elapsed_ms": 103416
+        },
+        {
+          "cpu_percent": 6,
+          "pid_count": 7,
+          "rss_bytes": 365019136,
+          "elapsed_ms": 104317
+        },
+        {
+          "cpu_percent": 1.4,
+          "pid_count": 5,
+          "rss_bytes": 343408640,
+          "elapsed_ms": 105362
+        }
+      ],
+      "results": [
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 65697.89999997616,
+          "exit_code": 0,
+          "first_output_ms": 950,
+          "index": 0,
+          "marker": "__ENSO_BENCHMARK_DONE_20_0__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-3ee1-7fe2-a92d-ec72a0fa8af5\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n11,879\r\n\r\n__ENSO_BENCHMARK_DONE_20_0__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:03 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-3ee1-7fe2-a92d-ec72a0fa8af5 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 11,879 __ENSO_BENCHMARK_DONE_20_0__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-11",
+          "started_at": 31826.800000071526,
+          "timed_out": false,
+          "duration_ms": 33871
+        },
+        {
+          "bytes": 881,
+          "done": true,
+          "done_at": 71868.5,
+          "exit_code": 0,
+          "first_output_ms": 266,
+          "index": 1,
+          "marker": "__ENSO_BENCHMARK_DONE_20_1__",
+          "marker_buffer": "2026-06-08T00:55:29.689115Z ERROR codex_core_skills::manager: failed to install system skills: io error while remove existing system skills dir: Directory not empty (os error 66)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-3ee5-7082-b1b9-b4d064759344\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n11,861\r\n\r\n__ENSO_BENCHMARK_DONE_20_1__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:09 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:55:29.689115Z ERROR codex_core_skills::manager: failed to install system skills: io error while remove existing system skills dir: Directory not empty (os error 66)OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-3ee5-7082-b1b9-b4d064759344 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-12",
+          "started_at": 31949.399999976158,
+          "timed_out": false,
+          "duration_ms": 39919
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 68475,
+          "exit_code": 0,
+          "first_output_ms": 752,
+          "index": 2,
+          "marker": "__ENSO_BENCHMARK_DONE_20_2__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-4255-7fb2-966c-b878e6d42637\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,838\r\n\r\n__ENSO_BENCHMARK_DONE_20_2__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:05 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-4255-7fb2-966c-b878e6d42637 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 26,838 __ENSO_BENCHMARK_DONE_20_2__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-13",
+          "started_at": 32951.5,
+          "timed_out": false,
+          "duration_ms": 35524
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 67053.89999997616,
+          "exit_code": 0,
+          "first_output_ms": 834,
+          "index": 3,
+          "marker": "__ENSO_BENCHMARK_DONE_20_3__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-463f-7d43-bb3a-65fec7da9ee2\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n25,292\r\n\r\n__ENSO_BENCHMARK_DONE_20_3__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:04 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-463f-7d43-bb3a-65fec7da9ee2 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 25,292 __ENSO_BENCHMARK_DONE_20_3__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-14",
+          "started_at": 33973.60000002384,
+          "timed_out": false,
+          "duration_ms": 33080
+        },
+        {
+          "bytes": 698,
+          "done": true,
+          "done_at": 72545.20000004768,
+          "exit_code": 0,
+          "first_output_ms": 771,
+          "index": 4,
+          "marker": "__ENSO_BENCHMARK_DONE_20_4__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-4b40-7712-a88a-b09b08add10b\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n204\r\n\r\n__ENSO_BENCHMARK_DONE_20_4__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:10 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-4b40-7712-a88a-b09b08add10b -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 204 __ENSO_BENCHMARK_DONE_20_4__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-15",
+          "started_at": 35173.700000047684,
+          "timed_out": false,
+          "duration_ms": 37372
+        },
+        {
+          "bytes": 698,
+          "done": true,
+          "done_at": 73048.60000002384,
+          "exit_code": 0,
+          "first_output_ms": 941,
+          "index": 5,
+          "marker": "__ENSO_BENCHMARK_DONE_20_5__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-5097-7261-af27-1c8b5b0e211d\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n206\r\n\r\n__ENSO_BENCHMARK_DONE_20_5__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:10 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-5097-7261-af27-1c8b5b0e211d -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 206 __ENSO_BENCHMARK_DONE_20_5__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-16",
+          "started_at": 36515,
+          "timed_out": false,
+          "duration_ms": 36534
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 74700.5,
+          "exit_code": 0,
+          "first_output_ms": 861,
+          "index": 6,
+          "marker": "__ENSO_BENCHMARK_DONE_20_6__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-51a6-7281-ba44-5391a76151a0\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,850\r\n\r\n__ENSO_BENCHMARK_DONE_20_6__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:12 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-51a6-7281-ba44-5391a76151a0 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 26,850 __ENSO_BENCHMARK_DONE_20_6__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-17",
+          "started_at": 36971.5,
+          "timed_out": false,
+          "duration_ms": 37729
+        },
+        {
+          "bytes": 698,
+          "done": true,
+          "done_at": 81433.80000007153,
+          "exit_code": 0,
+          "first_output_ms": 931,
+          "index": 7,
+          "marker": "__ENSO_BENCHMARK_DONE_20_7__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-6592-7ed1-af4b-3fa3279ab502\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n205\r\n\r\n__ENSO_BENCHMARK_DONE_20_7__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:18 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-6592-7ed1-af4b-3fa3279ab502 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 205 __ENSO_BENCHMARK_DONE_20_7__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-18",
+          "started_at": 41952.5,
+          "timed_out": false,
+          "duration_ms": 39481
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 81650.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 880,
+          "index": 8,
+          "marker": "__ENSO_BENCHMARK_DONE_20_8__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-6a08-7961-9be5-e293a804ede0\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,830\r\n\r\n__ENSO_BENCHMARK_DONE_20_8__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:19 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-6a08-7961-9be5-e293a804ede0 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 26,830 __ENSO_BENCHMARK_DONE_20_8__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-19",
+          "started_at": 42960.800000071526,
+          "timed_out": false,
+          "duration_ms": 38690
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 85896,
+          "exit_code": 0,
+          "first_output_ms": 1271,
+          "index": 9,
+          "marker": "__ENSO_BENCHMARK_DONE_20_9__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-6e75-7bf1-bd6d-861f83b62f6b\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,829\r\n\r\n__ENSO_BENCHMARK_DONE_20_9__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:23 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-6e75-7bf1-bd6d-861f83b62f6b -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 26,829 __ENSO_BENCHMARK_DONE_20_9__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-20",
+          "started_at": 44219.200000047684,
+          "timed_out": false,
+          "duration_ms": 41677
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 88373.80000007153,
+          "exit_code": 0,
+          "first_output_ms": 1440,
+          "index": 10,
+          "marker": "__ENSO_BENCHMARK_DONE_20_10__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-71ba-7ca1-9d1a-7d3ee72297ca\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n12,004\r\n\r\n__ENSO_BENCHMARK_DONE_20_10__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:25 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-71ba-7ca1-9d1a-7d3ee72297ca -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 12,004 __ENSO_BENCHMARK_DONE_20_10__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-21",
+          "started_at": 45038,
+          "timed_out": false,
+          "duration_ms": 43336
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 87424.10000002384,
+          "exit_code": 0,
+          "first_output_ms": 1311,
+          "index": 11,
+          "marker": "__ENSO_BENCHMARK_DONE_20_11__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-7624-7172-8cf0-e8cef9e264e1\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n12,003\r\n\r\n__ENSO_BENCHMARK_DONE_20_11__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:24 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-7624-7172-8cf0-e8cef9e264e1 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 12,003 __ENSO_BENCHMARK_DONE_20_11__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-22",
+          "started_at": 46065.5,
+          "timed_out": false,
+          "duration_ms": 41359
+        },
+        {
+          "bytes": 699,
+          "done": true,
+          "done_at": 89850.80000007153,
+          "exit_code": 0,
+          "first_output_ms": 1809,
+          "index": 12,
+          "marker": "__ENSO_BENCHMARK_DONE_20_12__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-7a82-7ee2-b789-2415fe5d9d98\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n205\r\n\r\n__ENSO_BENCHMARK_DONE_20_12__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:27 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-7a82-7ee2-b789-2415fe5d9d98 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 205 __ENSO_BENCHMARK_DONE_20_12__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-23",
+          "started_at": 47034.5,
+          "timed_out": false,
+          "duration_ms": 42816
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 89926.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 1785,
+          "index": 13,
+          "marker": "__ENSO_BENCHMARK_DONE_20_13__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-7e3b-7e30-8a66-31c5dd99015b\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n25,325\r\n\r\n__ENSO_BENCHMARK_DONE_20_13__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:27 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-7e3b-7e30-8a66-31c5dd99015b -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 25,325 __ENSO_BENCHMARK_DONE_20_13__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-24",
+          "started_at": 48049.60000002384,
+          "timed_out": false,
+          "duration_ms": 41877
+        },
+        {
+          "bytes": 873,
+          "done": true,
+          "done_at": 87585,
+          "exit_code": 0,
+          "first_output_ms": 661,
+          "index": 14,
+          "marker": "__ENSO_BENCHMARK_DONE_20_14__",
+          "marker_buffer": "2026-06-08T00:55:47.479571Z ERROR codex_core_skills::manager: failed to install system skills: io error while create system skills file parent: File exists (os error 17)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-8465-7ad0-8865-d5d84f28522e\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,831\r\n\r\n__ENSO_BENCHMARK_DONE_20_14__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:25 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:55:47.479571Z ERROR codex_core_skills::manager: failed to install system skills: io error while create system skills file parent: File exists (os error 17)OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-8465-7ad0-8865-d5d84f28522e -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run c...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-25",
+          "started_at": 49345.39999997616,
+          "timed_out": false,
+          "duration_ms": 38240
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 87584.89999997616,
+          "exit_code": 0,
+          "first_output_ms": 2834,
+          "index": 15,
+          "marker": "__ENSO_BENCHMARK_DONE_20_15__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-8742-7ad1-878f-68c303e8a9f9\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,853\r\n\r\n__ENSO_BENCHMARK_DONE_20_15__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:25 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-8742-7ad1-878f-68c303e8a9f9 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 26,853 __ENSO_BENCHMARK_DONE_20_15__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-26",
+          "started_at": 50066.700000047684,
+          "timed_out": false,
+          "duration_ms": 37518
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 88421.10000002384,
+          "exit_code": 0,
+          "first_output_ms": 2862,
+          "index": 16,
+          "marker": "__ENSO_BENCHMARK_DONE_20_16__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-8ce3-78f0-8011-6b5e02d1fa5c\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n12,007\r\n\r\n__ENSO_BENCHMARK_DONE_20_16__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:25 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-8ce3-78f0-8011-6b5e02d1fa5c -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OK hook: Stophook: Stop Completedtokens used 12,007 __ENSO_BENCHMARK_DONE_20_16__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-27",
+          "started_at": 51489.60000002384,
+          "timed_out": false,
+          "duration_ms": 36932
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 88195.5,
+          "exit_code": 0,
+          "first_output_ms": 4276,
+          "index": 17,
+          "marker": "__ENSO_BENCHMARK_DONE_20_17__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-9007-73f2-8cb8-837b9256b9f2\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,830\r\n\r\n__ENSO_BENCHMARK_DONE_20_17__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:25 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-9007-73f2-8cb8-837b9256b9f2 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 26,830 __ENSO_BENCHMARK_DONE_20_17__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-28",
+          "started_at": 52088.39999997616,
+          "timed_out": false,
+          "duration_ms": 36107
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 88750.20000004768,
+          "exit_code": 0,
+          "first_output_ms": 5738,
+          "index": 18,
+          "marker": "__ENSO_BENCHMARK_DONE_20_18__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-94ec-76f1-b2c1-c930cc64631a\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n12,006\r\n\r\n__ENSO_BENCHMARK_DONE_20_18__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:26 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-94ec-76f1-b2c1-c930cc64631a -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 12,006 __ENSO_BENCHMARK_DONE_20_18__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-29",
+          "started_at": 53099.300000071526,
+          "timed_out": false,
+          "duration_ms": 35651
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 89108.30000007153,
+          "exit_code": 0,
+          "first_output_ms": 6080,
+          "index": 19,
+          "marker": "__ENSO_BENCHMARK_DONE_20_19__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4ba-9977-7472-b32c-f2530be85e95\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n26,856\r\n\r\n__ENSO_BENCHMARK_DONE_20_19__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:56:26 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4ba-9977-7472-b32c-f2530be85e95 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completed tokens used 26,856 __ENSO_BENCHMARK_DONE_20_19__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-30",
+          "started_at": 54077.300000071526,
+          "timed_out": false,
+          "duration_ms": 35031
+        }
+      ],
+      "summary": {
+        "app_process": {
+          "avg_total_rss_mib": 3248.5,
+          "max_pid_count": 246,
+          "peak_total_cpu_percent": 729.4,
+          "peak_total_rss_mib": 7419.8
+        },
+        "avg_duration_ms": 38137,
+        "count": 20,
+        "data_bytes": 14369,
+        "data_events": 214,
+        "duration_p50_ms": 37518,
+        "duration_p95_ms": 42816,
+        "failed": 0,
+        "first_output_p50_ms": 950,
+        "first_output_p95_ms": 5738,
+        "ok": 20,
+        "session_counts_after": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        },
+        "wall_ms": 103231
+      }
+    },
+    {
+      "metrics_after": {
+        "counters": {
+          "activityChecks": 0,
+          "attach": 30,
+          "create": 30,
+          "dataBytes": 27497,
+          "dataEvents": 328,
+          "detach": 0,
+          "exit": 30,
+          "kill": 30,
+          "resize": 0,
+          "state": 0,
+          "writeBytes": 0,
+          "writes": 0
+        },
+        "generatedAt": 1780880338484,
+        "sessionCounts": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        }
+      },
+      "metrics_before": {
+        "counters": {
+          "activityChecks": 0,
+          "attach": 0,
+          "create": 0,
+          "dataBytes": 0,
+          "dataEvents": 0,
+          "detach": 0,
+          "exit": 0,
+          "kill": 0,
+          "resize": 0,
+          "state": 0,
+          "writeBytes": 0,
+          "writes": 0
+        },
+        "generatedAt": 1780880234634,
+        "sessionCounts": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        }
+      },
+      "process_samples": [
+        {
+          "cpu_percent": 22,
+          "pid_count": 9,
+          "rss_bytes": 389693440,
+          "elapsed_ms": 1340
+        },
+        {
+          "cpu_percent": 22.5,
+          "pid_count": 11,
+          "rss_bytes": 429686784,
+          "elapsed_ms": 2095
+        },
+        {
+          "cpu_percent": 97.7,
+          "pid_count": 31,
+          "rss_bytes": 645382144,
+          "elapsed_ms": 3067
+        },
+        {
+          "cpu_percent": 175.6,
+          "pid_count": 74,
+          "rss_bytes": 1351876608,
+          "elapsed_ms": 4058
+        },
+        {
+          "cpu_percent": 217,
+          "pid_count": 84,
+          "rss_bytes": 1998258176,
+          "elapsed_ms": 5167
+        },
+        {
+          "cpu_percent": 245.8,
+          "pid_count": 115,
+          "rss_bytes": 2224553984,
+          "elapsed_ms": 6170
+        },
+        {
+          "cpu_percent": 189.7,
+          "pid_count": 100,
+          "rss_bytes": 2467758080,
+          "elapsed_ms": 7247
+        },
+        {
+          "cpu_percent": 203.3,
+          "pid_count": 98,
+          "rss_bytes": 2589442048,
+          "elapsed_ms": 8136
+        },
+        {
+          "cpu_percent": 253,
+          "pid_count": 102,
+          "rss_bytes": 2928345088,
+          "elapsed_ms": 9272
+        },
+        {
+          "cpu_percent": 191.4,
+          "pid_count": 116,
+          "rss_bytes": 3189833728,
+          "elapsed_ms": 10512
+        },
+        {
+          "cpu_percent": 359,
+          "pid_count": 128,
+          "rss_bytes": 3667050496,
+          "elapsed_ms": 11322
+        },
+        {
+          "cpu_percent": 235.8,
+          "pid_count": 133,
+          "rss_bytes": 3671195648,
+          "elapsed_ms": 12639
+        },
+        {
+          "cpu_percent": 179.9,
+          "pid_count": 142,
+          "rss_bytes": 3645997056,
+          "elapsed_ms": 13620
+        },
+        {
+          "cpu_percent": 292.5,
+          "pid_count": 141,
+          "rss_bytes": 4055236608,
+          "elapsed_ms": 14197
+        },
+        {
+          "cpu_percent": 268.1,
+          "pid_count": 157,
+          "rss_bytes": 4484956160,
+          "elapsed_ms": 15570
+        },
+        {
+          "cpu_percent": 218.1,
+          "pid_count": 170,
+          "rss_bytes": 4727603200,
+          "elapsed_ms": 16743
+        },
+        {
+          "cpu_percent": 280.4,
+          "pid_count": 183,
+          "rss_bytes": 4950310912,
+          "elapsed_ms": 17434
+        },
+        {
+          "cpu_percent": 332.4,
+          "pid_count": 186,
+          "rss_bytes": 5462638592,
+          "elapsed_ms": 18390
+        },
+        {
+          "cpu_percent": 294.9,
+          "pid_count": 215,
+          "rss_bytes": 5792317440,
+          "elapsed_ms": 19303
+        },
+        {
+          "cpu_percent": 232.2,
+          "pid_count": 208,
+          "rss_bytes": 5863981056,
+          "elapsed_ms": 21512
+        },
+        {
+          "cpu_percent": 230.5,
+          "pid_count": 199,
+          "rss_bytes": 5735432192,
+          "elapsed_ms": 21824
+        },
+        {
+          "cpu_percent": 335.9,
+          "pid_count": 211,
+          "rss_bytes": 6129090560,
+          "elapsed_ms": 22796
+        },
+        {
+          "cpu_percent": 275.6,
+          "pid_count": 227,
+          "rss_bytes": 6189858816,
+          "elapsed_ms": 23631
+        },
+        {
+          "cpu_percent": 230.1,
+          "pid_count": 238,
+          "rss_bytes": 6588006400,
+          "elapsed_ms": 24527
+        },
+        {
+          "cpu_percent": 335.5,
+          "pid_count": 223,
+          "rss_bytes": 6967967744,
+          "elapsed_ms": 25558
+        },
+        {
+          "cpu_percent": 356.7,
+          "pid_count": 238,
+          "rss_bytes": 7085195264,
+          "elapsed_ms": 26594
+        },
+        {
+          "cpu_percent": 307.1,
+          "pid_count": 249,
+          "rss_bytes": 7391510528,
+          "elapsed_ms": 27905
+        },
+        {
+          "cpu_percent": 333.4,
+          "pid_count": 263,
+          "rss_bytes": 8004714496,
+          "elapsed_ms": 28773
+        },
+        {
+          "cpu_percent": 329,
+          "pid_count": 278,
+          "rss_bytes": 8323317760,
+          "elapsed_ms": 29668
+        },
+        {
+          "cpu_percent": 390.2,
+          "pid_count": 262,
+          "rss_bytes": 8361197568,
+          "elapsed_ms": 30847
+        },
+        {
+          "cpu_percent": 372.5,
+          "pid_count": 302,
+          "rss_bytes": 8834842624,
+          "elapsed_ms": 31621
+        },
+        {
+          "cpu_percent": 305.5,
+          "pid_count": 329,
+          "rss_bytes": 8847867904,
+          "elapsed_ms": 33512
+        },
+        {
+          "cpu_percent": 317.1,
+          "pid_count": 308,
+          "rss_bytes": 9080176640,
+          "elapsed_ms": 33705
+        },
+        {
+          "cpu_percent": 363.8,
+          "pid_count": 289,
+          "rss_bytes": 8943992832,
+          "elapsed_ms": 35093
+        },
+        {
+          "cpu_percent": 251.4,
+          "pid_count": 290,
+          "rss_bytes": 8726396928,
+          "elapsed_ms": 35859
+        },
+        {
+          "cpu_percent": 284.2,
+          "pid_count": 298,
+          "rss_bytes": 8957607936,
+          "elapsed_ms": 37515
+        },
+        {
+          "cpu_percent": 279.2,
+          "pid_count": 293,
+          "rss_bytes": 8915468288,
+          "elapsed_ms": 37713
+        },
+        {
+          "cpu_percent": 391.1,
+          "pid_count": 292,
+          "rss_bytes": 9392766976,
+          "elapsed_ms": 38958
+        },
+        {
+          "cpu_percent": 313,
+          "pid_count": 307,
+          "rss_bytes": 9331408896,
+          "elapsed_ms": 40333
+        },
+        {
+          "cpu_percent": 334.2,
+          "pid_count": 331,
+          "rss_bytes": 9604005888,
+          "elapsed_ms": 40809
+        },
+        {
+          "cpu_percent": 377.9,
+          "pid_count": 321,
+          "rss_bytes": 9992519680,
+          "elapsed_ms": 41786
+        },
+        {
+          "cpu_percent": 321,
+          "pid_count": 305,
+          "rss_bytes": 9462824960,
+          "elapsed_ms": 42863
+        },
+        {
+          "cpu_percent": 375.3,
+          "pid_count": 300,
+          "rss_bytes": 9201041408,
+          "elapsed_ms": 44499
+        },
+        {
+          "cpu_percent": 305.2,
+          "pid_count": 305,
+          "rss_bytes": 9404399616,
+          "elapsed_ms": 45246
+        },
+        {
+          "cpu_percent": 308.4,
+          "pid_count": 296,
+          "rss_bytes": 8800468992,
+          "elapsed_ms": 45954
+        },
+        {
+          "cpu_percent": 339.6,
+          "pid_count": 314,
+          "rss_bytes": 9039527936,
+          "elapsed_ms": 46924
+        },
+        {
+          "cpu_percent": 259.6,
+          "pid_count": 312,
+          "rss_bytes": 9170567168,
+          "elapsed_ms": 48399
+        },
+        {
+          "cpu_percent": 394,
+          "pid_count": 318,
+          "rss_bytes": 9377628160,
+          "elapsed_ms": 49192
+        },
+        {
+          "cpu_percent": 356.6,
+          "pid_count": 309,
+          "rss_bytes": 9691168768,
+          "elapsed_ms": 50253
+        },
+        {
+          "cpu_percent": 371.8,
+          "pid_count": 321,
+          "rss_bytes": 10077143040,
+          "elapsed_ms": 51401
+        },
+        {
+          "cpu_percent": 340,
+          "pid_count": 345,
+          "rss_bytes": 9889054720,
+          "elapsed_ms": 52332
+        },
+        {
+          "cpu_percent": 348.3,
+          "pid_count": 352,
+          "rss_bytes": 9938698240,
+          "elapsed_ms": 53487
+        },
+        {
+          "cpu_percent": 347.4,
+          "pid_count": 337,
+          "rss_bytes": 9859366912,
+          "elapsed_ms": 54390
+        },
+        {
+          "cpu_percent": 339.9,
+          "pid_count": 340,
+          "rss_bytes": 9890758656,
+          "elapsed_ms": 55249
+        },
+        {
+          "cpu_percent": 304.2,
+          "pid_count": 338,
+          "rss_bytes": 9790226432,
+          "elapsed_ms": 55840
+        },
+        {
+          "cpu_percent": 229,
+          "pid_count": 313,
+          "rss_bytes": 9184231424,
+          "elapsed_ms": 57325
+        },
+        {
+          "cpu_percent": 267.7,
+          "pid_count": 305,
+          "rss_bytes": 9098543104,
+          "elapsed_ms": 57937
+        },
+        {
+          "cpu_percent": 240.4,
+          "pid_count": 279,
+          "rss_bytes": 8563736576,
+          "elapsed_ms": 58786
+        },
+        {
+          "cpu_percent": 278,
+          "pid_count": 269,
+          "rss_bytes": 8148140032,
+          "elapsed_ms": 59855
+        },
+        {
+          "cpu_percent": 319.1,
+          "pid_count": 256,
+          "rss_bytes": 8176091136,
+          "elapsed_ms": 60901
+        },
+        {
+          "cpu_percent": 230.8,
+          "pid_count": 246,
+          "rss_bytes": 7390248960,
+          "elapsed_ms": 61947
+        },
+        {
+          "cpu_percent": 254.3,
+          "pid_count": 237,
+          "rss_bytes": 6916112384,
+          "elapsed_ms": 63162
+        },
+        {
+          "cpu_percent": 177.1,
+          "pid_count": 223,
+          "rss_bytes": 6699876352,
+          "elapsed_ms": 63738
+        },
+        {
+          "cpu_percent": 206.7,
+          "pid_count": 213,
+          "rss_bytes": 6678724608,
+          "elapsed_ms": 64797
+        },
+        {
+          "cpu_percent": 214.5,
+          "pid_count": 236,
+          "rss_bytes": 6310281216,
+          "elapsed_ms": 65724
+        },
+        {
+          "cpu_percent": 247.3,
+          "pid_count": 230,
+          "rss_bytes": 6337560576,
+          "elapsed_ms": 66707
+        },
+        {
+          "cpu_percent": 157.5,
+          "pid_count": 202,
+          "rss_bytes": 5688655872,
+          "elapsed_ms": 68115
+        },
+        {
+          "cpu_percent": 231.7,
+          "pid_count": 219,
+          "rss_bytes": 5961252864,
+          "elapsed_ms": 68682
+        },
+        {
+          "cpu_percent": 204.5,
+          "pid_count": 185,
+          "rss_bytes": 5708447744,
+          "elapsed_ms": 69628
+        },
+        {
+          "cpu_percent": 200,
+          "pid_count": 178,
+          "rss_bytes": 5391974400,
+          "elapsed_ms": 70939
+        },
+        {
+          "cpu_percent": 255,
+          "pid_count": 172,
+          "rss_bytes": 5232230400,
+          "elapsed_ms": 72027
+        },
+        {
+          "cpu_percent": 177.3,
+          "pid_count": 154,
+          "rss_bytes": 4792336384,
+          "elapsed_ms": 72675
+        },
+        {
+          "cpu_percent": 242.6,
+          "pid_count": 164,
+          "rss_bytes": 4813979648,
+          "elapsed_ms": 73811
+        },
+        {
+          "cpu_percent": 198.1,
+          "pid_count": 157,
+          "rss_bytes": 4769824768,
+          "elapsed_ms": 75083
+        },
+        {
+          "cpu_percent": 221.5,
+          "pid_count": 148,
+          "rss_bytes": 4058267648,
+          "elapsed_ms": 75727
+        },
+        {
+          "cpu_percent": 135.3,
+          "pid_count": 136,
+          "rss_bytes": 3688103936,
+          "elapsed_ms": 76656
+        },
+        {
+          "cpu_percent": 121.9,
+          "pid_count": 138,
+          "rss_bytes": 3580461056,
+          "elapsed_ms": 78251
+        },
+        {
+          "cpu_percent": 148,
+          "pid_count": 138,
+          "rss_bytes": 3259105280,
+          "elapsed_ms": 78919
+        },
+        {
+          "cpu_percent": 162.2,
+          "pid_count": 142,
+          "rss_bytes": 3024551936,
+          "elapsed_ms": 79849
+        },
+        {
+          "cpu_percent": 162.5,
+          "pid_count": 133,
+          "rss_bytes": 3136471040,
+          "elapsed_ms": 80808
+        },
+        {
+          "cpu_percent": 191.9,
+          "pid_count": 139,
+          "rss_bytes": 2996994048,
+          "elapsed_ms": 81822
+        },
+        {
+          "cpu_percent": 222.8,
+          "pid_count": 132,
+          "rss_bytes": 2883731456,
+          "elapsed_ms": 82669
+        },
+        {
+          "cpu_percent": 208,
+          "pid_count": 105,
+          "rss_bytes": 2230517760,
+          "elapsed_ms": 83807
+        },
+        {
+          "cpu_percent": 249.7,
+          "pid_count": 109,
+          "rss_bytes": 2147696640,
+          "elapsed_ms": 84700
+        },
+        {
+          "cpu_percent": 191.9,
+          "pid_count": 116,
+          "rss_bytes": 2208186368,
+          "elapsed_ms": 85781
+        },
+        {
+          "cpu_percent": 182.7,
+          "pid_count": 116,
+          "rss_bytes": 2245214208,
+          "elapsed_ms": 86939
+        },
+        {
+          "cpu_percent": 227.7,
+          "pid_count": 101,
+          "rss_bytes": 1998274560,
+          "elapsed_ms": 87797
+        },
+        {
+          "cpu_percent": 163.4,
+          "pid_count": 78,
+          "rss_bytes": 1562738688,
+          "elapsed_ms": 88788
+        },
+        {
+          "cpu_percent": 170.9,
+          "pid_count": 85,
+          "rss_bytes": 1392541696,
+          "elapsed_ms": 89907
+        },
+        {
+          "cpu_percent": 199,
+          "pid_count": 78,
+          "rss_bytes": 1325056000,
+          "elapsed_ms": 90785
+        },
+        {
+          "cpu_percent": 148.7,
+          "pid_count": 70,
+          "rss_bytes": 935149568,
+          "elapsed_ms": 91875
+        },
+        {
+          "cpu_percent": 154.8,
+          "pid_count": 70,
+          "rss_bytes": 1035517952,
+          "elapsed_ms": 92774
+        },
+        {
+          "cpu_percent": 114.2,
+          "pid_count": 55,
+          "rss_bytes": 990347264,
+          "elapsed_ms": 93768
+        },
+        {
+          "cpu_percent": 175.5,
+          "pid_count": 55,
+          "rss_bytes": 1075445760,
+          "elapsed_ms": 94763
+        },
+        {
+          "cpu_percent": 148.6,
+          "pid_count": 56,
+          "rss_bytes": 1089814528,
+          "elapsed_ms": 95742
+        },
+        {
+          "cpu_percent": 156.1,
+          "pid_count": 54,
+          "rss_bytes": 990232576,
+          "elapsed_ms": 96728
+        },
+        {
+          "cpu_percent": 160.2,
+          "pid_count": 51,
+          "rss_bytes": 867713024,
+          "elapsed_ms": 97726
+        },
+        {
+          "cpu_percent": 122.9,
+          "pid_count": 47,
+          "rss_bytes": 797032448,
+          "elapsed_ms": 98725
+        },
+        {
+          "cpu_percent": 128,
+          "pid_count": 45,
+          "rss_bytes": 615350272,
+          "elapsed_ms": 99754
+        },
+        {
+          "cpu_percent": 89.2,
+          "pid_count": 34,
+          "rss_bytes": 583237632,
+          "elapsed_ms": 101959
+        },
+        {
+          "cpu_percent": 14.2,
+          "pid_count": 28,
+          "rss_bytes": 467976192,
+          "elapsed_ms": 102196
+        },
+        {
+          "cpu_percent": 18.7,
+          "pid_count": 18,
+          "rss_bytes": 446431232,
+          "elapsed_ms": 103209
+        },
+        {
+          "cpu_percent": 1.6,
+          "pid_count": 5,
+          "rss_bytes": 266043392,
+          "elapsed_ms": 103964
+        }
+      ],
+      "results": [
+        {
+          "bytes": 881,
+          "done": true,
+          "done_at": 222917,
+          "exit_code": 0,
+          "first_output_ms": 2188,
+          "index": 0,
+          "marker": "__ENSO_BENCHMARK_DONE_30_0__",
+          "marker_buffer": "2026-06-08T00:57:16.804772Z ERROR codex_core_skills::manager: failed to install system skills: io error while remove existing system skills dir: Directory not empty (os error 66)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-e1ac-7d42-8be5-f454983bc515\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,444\r\n\r\n__ENSO_BENCHMARK_DONE_30_0__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:40 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:16.804772Z ERROR codex_core_skills::manager: failed to install system skills: io error while remove existing system skills dir: Directory not empty (os error 66)OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bb-e1ac-7d42-8be5-f454983bc515 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-31",
+          "started_at": 137145.39999997616,
+          "timed_out": false,
+          "duration_ms": 85772
+        },
+        {
+          "bytes": 881,
+          "done": true,
+          "done_at": 223858,
+          "exit_code": 0,
+          "first_output_ms": 1372,
+          "index": 1,
+          "marker": "__ENSO_BENCHMARK_DONE_30_1__",
+          "marker_buffer": "2026-06-08T00:57:16.806495Z ERROR codex_core_skills::manager: failed to install system skills: io error while remove existing system skills dir: Directory not empty (os error 66)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-e1ac-72c3-b456-6e0f7c99b033\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n25,598\r\n\r\n__ENSO_BENCHMARK_DONE_30_1__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:41 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:16.806495Z ERROR codex_core_skills::manager: failed to install system skills: io error while remove existing system skills dir: Directory not empty (os error 66)OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bb-e1ac-72c3-b456-6e0f7c99b033 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-32",
+          "started_at": 137962.20000004768,
+          "timed_out": false,
+          "duration_ms": 85896
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 225612.89999997616,
+          "exit_code": 0,
+          "first_output_ms": 1804,
+          "index": 2,
+          "marker": "__ENSO_BENCHMARK_DONE_30_2__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-e1ac-70e2-b3ad-bbbbe2703146\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n24,065\r\n\r\n__ENSO_BENCHMARK_DONE_30_2__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:43 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bb-e1ac-70e2-b3ad-bbbbe2703146 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 24,065 __ENSO_BENCHMARK_DONE_30_2__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-33",
+          "started_at": 138954.20000004768,
+          "timed_out": false,
+          "duration_ms": 86659
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 225881.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 4026,
+          "index": 3,
+          "marker": "__ENSO_BENCHMARK_DONE_30_3__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-e608-7022-b448-cca49c7421e8\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,443\r\n\r\n__ENSO_BENCHMARK_DONE_30_3__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:43 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bb-e608-7022-b448-cca49c7421e8 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,443 __ENSO_BENCHMARK_DONE_30_3__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-34",
+          "started_at": 139959.60000002384,
+          "timed_out": false,
+          "duration_ms": 85922
+        },
+        {
+          "bytes": 1073,
+          "done": true,
+          "done_at": 225519.89999997616,
+          "exit_code": 0,
+          "first_output_ms": 3647,
+          "index": 4,
+          "marker": "__ENSO_BENCHMARK_DONE_30_4__",
+          "marker_buffer": "2026-06-08T00:57:22.080369Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/skill-installer/LICENSE.txt: No such file or directory (os error 2)\r\n2026-06-08T00:57:22.080955Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-eccd-7450-9b2a-16d23d73e42e\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n392\r\n\r\n__ENSO_BENCHMARK_DONE_30_4__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:42 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:22.080369Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/skill-installer/LICENSE.txt: No such file or directory (os error 2) 2026-06-08T00:57:22.080955Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox:...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-35",
+          "started_at": 140958.39999997616,
+          "timed_out": false,
+          "duration_ms": 84562
+        },
+        {
+          "bytes": 2898,
+          "done": true,
+          "done_at": 227231.5,
+          "exit_code": 0,
+          "first_output_ms": 3593,
+          "index": 5,
+          "marker": "__ENSO_BENCHMARK_DONE_30_5__",
+          "marker_buffer": "ectory (os error 2)\r\n2026-06-08T00:57:23.076925Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/agents: No such file or directory (os error 2)\r\n2026-06-08T00:57:23.077001Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/scripts: No such file or directory (os error 2)\r\n2026-06-08T00:57:23.077046Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)\r\n2026-06-08T00:57:23.077072Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs/references: No such file or directory (os error 2)\r\n2026-06-08T00:57:23.079023Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs/agents: No such file or directory (os error 2)\r\n2026-06-08T00:57:23.079075Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs/scripts: No such file or directory (os error 2)\r\n2026-06-08T00:57:23.079117Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs/assets: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-ee46-7023-bd7b-4d0d05af0702\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,445\r\n\r\n__ENSO_BENCHMARK_DONE_30_5__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:44 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:23.027189Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-creator/assets: No such file or directory (os error 2) 2026-06-08T00:57:23.038263Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/plugin-creator/references: No such file or directory (os error 2) 2026-06-08T00:57:23.042238Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/plugin-creato...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-36",
+          "started_at": 141959.10000002384,
+          "timed_out": false,
+          "duration_ms": 85272
+        },
+        {
+          "bytes": 1284,
+          "done": true,
+          "done_at": 224569,
+          "exit_code": 0,
+          "first_output_ms": 5574,
+          "index": 6,
+          "marker": "__ENSO_BENCHMARK_DONE_30_6__",
+          "marker_buffer": "2026-06-08T00:57:26.009797Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/cli.md: No such file or directory (os error 2)\r\n2026-06-08T00:57:26.012494Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/codex-network.md: No such file or directory (os error 2)\r\n2026-06-08T00:57:26.014296Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/image-api.md: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-f6de-73e1-b122-48cd9301fbe6\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n21,906\r\n\r\n__ENSO_BENCHMARK_DONE_30_6__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:42 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:26.009797Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/cli.md: No such file or directory (os error 2) 2026-06-08T00:57:26.012494Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/codex-network.md: No such file or directory (os error 2) 2026-06-08T00:57:26.014296Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/....",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-37",
+          "started_at": 142964,
+          "timed_out": false,
+          "duration_ms": 81605
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 228451,
+          "exit_code": 0,
+          "first_output_ms": 8133,
+          "index": 7,
+          "marker": "__ENSO_BENCHMARK_DONE_30_7__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-f8fe-7f71-bf5a-7abc5273bd74\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n21,932\r\n\r\n__ENSO_BENCHMARK_DONE_30_7__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:45 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bb-f8fe-7f71-bf5a-7abc5273bd74 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 21,932 __ENSO_BENCHMARK_DONE_30_7__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-38",
+          "started_at": 143983.70000004768,
+          "timed_out": false,
+          "duration_ms": 84467
+        },
+        {
+          "bytes": 701,
+          "done": true,
+          "done_at": 228485.10000002384,
+          "exit_code": 0,
+          "first_output_ms": 9454,
+          "index": 8,
+          "marker": "__ENSO_BENCHMARK_DONE_30_8__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bb-fcf6-7000-a49b-ea7bcf3d1bb3\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,088\r\n\r\n__ENSO_BENCHMARK_DONE_30_8__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:45 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bb-fcf6-7000-a49b-ea7bcf3d1bb3 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,088 __ENSO_BENCHMARK_DONE_30_8__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-39",
+          "started_at": 144958.20000004768,
+          "timed_out": false,
+          "duration_ms": 83527
+        },
+        {
+          "bytes": 885,
+          "done": true,
+          "done_at": 226364.60000002384,
+          "exit_code": 0,
+          "first_output_ms": 7096,
+          "index": 9,
+          "marker": "__ENSO_BENCHMARK_DONE_30_9__",
+          "marker_buffer": "2026-06-08T00:57:30.519775Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-01d0-7f10-aade-3069c3355bb4\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,465\r\n\r\n__ENSO_BENCHMARK_DONE_30_9__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:43 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:30.519775Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-01d0-7f10-aade-3069c3355bb4 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect f...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-40",
+          "started_at": 145962.60000002384,
+          "timed_out": false,
+          "duration_ms": 80402
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 226475.89999997616,
+          "exit_code": 0,
+          "first_output_ms": 9462,
+          "index": 10,
+          "marker": "__ENSO_BENCHMARK_DONE_30_10__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-06f2-7773-8672-85f5c2137a51\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,468\r\n\r\n__ENSO_BENCHMARK_DONE_30_10__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:43 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-06f2-7773-8672-85f5c2137a51 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,468 __ENSO_BENCHMARK_DONE_30_10__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-41",
+          "started_at": 147016.89999997616,
+          "timed_out": false,
+          "duration_ms": 79459
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 228484.60000002384,
+          "exit_code": 0,
+          "first_output_ms": 13895,
+          "index": 11,
+          "marker": "__ENSO_BENCHMARK_DONE_30_11__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-0ca3-7e21-bd6c-44eb51554151\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,467\r\n\r\n__ENSO_BENCHMARK_DONE_30_11__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:45 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-0ca3-7e21-bd6c-44eb51554151 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,467 __ENSO_BENCHMARK_DONE_30_11__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-42",
+          "started_at": 147957.20000004768,
+          "timed_out": false,
+          "duration_ms": 80527
+        },
+        {
+          "bytes": 1077,
+          "done": true,
+          "done_at": 228267,
+          "exit_code": 0,
+          "first_output_ms": 8376,
+          "index": 12,
+          "marker": "__ENSO_BENCHMARK_DONE_30_12__",
+          "marker_buffer": "2026-06-08T00:57:34.877121Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/skill-installer/LICENSE.txt: No such file or directory (os error 2)\r\n2026-06-08T00:57:34.911086Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-0e2c-79f3-841f-df839f23fc13\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,441\r\n\r\n__ENSO_BENCHMARK_DONE_30_12__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:45 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:34.877121Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/skill-installer/LICENSE.txt: No such file or directory (os error 2)2026-06-08T00:57:34.911086Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: ...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-43",
+          "started_at": 149038.70000004768,
+          "timed_out": false,
+          "duration_ms": 79228
+        },
+        {
+          "bytes": 699,
+          "done": true,
+          "done_at": 228740.89999997616,
+          "exit_code": 0,
+          "first_output_ms": 15160,
+          "index": 13,
+          "marker": "__ENSO_BENCHMARK_DONE_30_13__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-14f6-7172-a344-ded252825f39\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n401\r\n\r\n__ENSO_BENCHMARK_DONE_30_13__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:46 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-14f6-7172-a344-ded252825f39 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 401 __ENSO_BENCHMARK_DONE_30_13__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-44",
+          "started_at": 149959.39999997616,
+          "timed_out": false,
+          "duration_ms": 78782
+        },
+        {
+          "bytes": 699,
+          "done": true,
+          "done_at": 228024.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 13531,
+          "index": 14,
+          "marker": "__ENSO_BENCHMARK_DONE_30_14__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-16df-78e0-bceb-afacf0a2315e\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n401\r\n\r\n__ENSO_BENCHMARK_DONE_30_14__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:45 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-16df-78e0-bceb-afacf0a2315e -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 401 __ENSO_BENCHMARK_DONE_30_14__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-45",
+          "started_at": 151050.20000004768,
+          "timed_out": false,
+          "duration_ms": 76974
+        },
+        {
+          "bytes": 3447,
+          "done": true,
+          "done_at": 230726.80000007153,
+          "exit_code": 0,
+          "first_output_ms": 11045,
+          "index": 15,
+          "marker": "__ENSO_BENCHMARK_DONE_30_15__",
+          "marker_buffer": "irectory (os error 2)\r\n2026-06-08T00:57:40.581073Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/agents: No such file or directory (os error 2)\r\n2026-06-08T00:57:40.581284Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/scripts: No such file or directory (os error 2)\r\n2026-06-08T00:57:40.581481Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-installer/assets: No such file or directory (os error 2)\r\n2026-06-08T00:57:40.582827Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs/references: No such file or directory (os error 2)\r\n2026-06-08T00:57:40.585107Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs/agents: No such file or directory (os error 2)\r\n2026-06-08T00:57:40.585904Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs/scripts: No such file or directory (os error 2)\r\n2026-06-08T00:57:40.586429Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/openai-docs/assets: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-1a3e-7003-9347-48f83c2135b5\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n402\r\n\r\n__ENSO_BENCHMARK_DONE_30_15__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:48 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:40.579838Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-creator/references: No such file or directory (os error 2) 2026-06-08T00:57:40.580251Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-creator/agents: No such file or directory (os error 2) 2026-06-08T00:57:40.580354Z ERROR codex_core_skills::loader: failed to read skills dir /Users/zlb/.codex/skills/.system/skill-creator/...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-46",
+          "started_at": 152058.60000002384,
+          "timed_out": false,
+          "duration_ms": 78668
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 234471.89999997616,
+          "exit_code": 0,
+          "first_output_ms": 16052,
+          "index": 16,
+          "marker": "__ENSO_BENCHMARK_DONE_30_16__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-2182-78d0-834a-69b80f386f9c\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n11,823\r\n\r\n__ENSO_BENCHMARK_DONE_30_16__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:51 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-2182-78d0-834a-69b80f386f9c -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 11,823 __ENSO_BENCHMARK_DONE_30_16__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-47",
+          "started_at": 153062.39999997616,
+          "timed_out": false,
+          "duration_ms": 81410
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 230157.10000002384,
+          "exit_code": 0,
+          "first_output_ms": 16495,
+          "index": 17,
+          "marker": "__ENSO_BENCHMARK_DONE_30_17__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-2339-7fd2-a9d8-ae16f02567c4\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,083\r\n\r\n__ENSO_BENCHMARK_DONE_30_17__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:47 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-2339-7fd2-a9d8-ae16f02567c4 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,083 __ENSO_BENCHMARK_DONE_30_17__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-48",
+          "started_at": 153962.39999997616,
+          "timed_out": false,
+          "duration_ms": 76195
+        },
+        {
+          "bytes": 1476,
+          "done": true,
+          "done_at": 233180.30000007153,
+          "exit_code": 0,
+          "first_output_ms": 13467,
+          "index": 18,
+          "marker": "__ENSO_BENCHMARK_DONE_30_18__",
+          "marker_buffer": "2026-06-08T00:57:45.894826Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/cli.md: No such file or directory (os error 2)\r\n2026-06-08T00:57:45.897349Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/codex-network.md: No such file or directory (os error 2)\r\n2026-06-08T00:57:45.909601Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/image-api.md: No such file or directory (os error 2)\r\n2026-06-08T00:57:45.978565Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/assets/imagegen.png: No such file or directory (os error 2)\r\nOpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-295d-7f50-b208-fb45bf0be4cf\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,311\r\n\r\n__ENSO_BENCHMARK_DONE_30_18__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:50 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "2026-06-08T00:57:45.894826Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/cli.md: No such file or directory (os error 2) 2026-06-08T00:57:45.897349Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/.system/imagegen/references/codex-network.md: No such file or directory (os error 2) 2026-06-08T00:57:45.909601Z ERROR codex_core_skills::loader: failed to stat skills path /Users/zlb/.codex/skills/....",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-49",
+          "started_at": 154957.5,
+          "timed_out": false,
+          "duration_ms": 78223
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 233261.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 19781,
+          "index": 19,
+          "marker": "__ENSO_BENCHMARK_DONE_30_19__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-3026-7db2-bb3c-dead8e087fe9\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,366\r\n\r\n__ENSO_BENCHMARK_DONE_30_19__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:50 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-3026-7db2-bb3c-dead8e087fe9 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,366 __ENSO_BENCHMARK_DONE_30_19__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-50",
+          "started_at": 155986.5,
+          "timed_out": false,
+          "duration_ms": 77275
+        },
+        {
+          "bytes": 699,
+          "done": true,
+          "done_at": 234952.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 21609,
+          "index": 20,
+          "marker": "__ENSO_BENCHMARK_DONE_30_20__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-3342-7b93-a475-fba76065fd89\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n428\r\n\r\n__ENSO_BENCHMARK_DONE_30_20__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:52 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-3342-7b93-a475-fba76065fd89 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 428 __ENSO_BENCHMARK_DONE_30_20__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-51",
+          "started_at": 156953.80000007153,
+          "timed_out": false,
+          "duration_ms": 77999
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 233991,
+          "exit_code": 0,
+          "first_output_ms": 17549,
+          "index": 21,
+          "marker": "__ENSO_BENCHMARK_DONE_30_21__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-32ac-7563-83f0-ce5874cec217\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,466\r\n\r\n__ENSO_BENCHMARK_DONE_30_21__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:51 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-32ac-7563-83f0-ce5874cec217 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,466 __ENSO_BENCHMARK_DONE_30_21__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-52",
+          "started_at": 157960.20000004768,
+          "timed_out": false,
+          "duration_ms": 76031
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 234924.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 18473,
+          "index": 22,
+          "marker": "__ENSO_BENCHMARK_DONE_30_22__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-3905-70c1-a5eb-bdb98f8a2d6e\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,463\r\n\r\n__ENSO_BENCHMARK_DONE_30_22__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:52 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-3905-70c1-a5eb-bdb98f8a2d6e -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,463 __ENSO_BENCHMARK_DONE_30_22__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-53",
+          "started_at": 159006,
+          "timed_out": false,
+          "duration_ms": 75918
+        },
+        {
+          "bytes": 702,
+          "done": true,
+          "done_at": 236034.20000004768,
+          "exit_code": 0,
+          "first_output_ms": 21175,
+          "index": 23,
+          "marker": "__ENSO_BENCHMARK_DONE_30_23__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-3d64-7863-b190-4e199a35f658\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n21,931\r\n\r\n__ENSO_BENCHMARK_DONE_30_23__:0\r\n\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                               \r \r\r\u001b[0m\u001b[27m\u001b[24m\u001b[J08:58:53 zlb@zlbdeMacBook-Air ~/Code/2026code/EnsoAI % \u001b[K\u001b[?2004h",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-3d64-7863-b190-4e199a35f658 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 21,931 __ENSO_BENCHMARK_DONE_30_23__:0\u001b[1m\u001b[7m%\u001b[27m\u001b[1...",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-54",
+          "started_at": 159957.39999997616,
+          "timed_out": false,
+          "duration_ms": 76077
+        },
+        {
+          "bytes": 511,
+          "done": true,
+          "done_at": 220149.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 23505,
+          "index": 24,
+          "marker": "__ENSO_BENCHMARK_DONE_30_24__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-43c5-7961-b88b-80e7923f0152\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n537\r\n\r\n__ENSO_BENCHMARK_DONE_30_24__:0\r\n",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-43c5-7961-b88b-80e7923f0152 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 537 __ENSO_BENCHMARK_DONE_30_24__:0",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-55",
+          "started_at": 161017.60000002384,
+          "timed_out": false,
+          "duration_ms": 59132
+        },
+        {
+          "bytes": 514,
+          "done": true,
+          "done_at": 221008.60000002384,
+          "exit_code": 0,
+          "first_output_ms": 24870,
+          "index": 25,
+          "marker": "__ENSO_BENCHMARK_DONE_30_25__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-499e-7a03-9100-af33a7f8fd75\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n25,623\r\n\r\n__ENSO_BENCHMARK_DONE_30_25__:0\r\n",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-499e-7a03-9100-af33a7f8fd75 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 25,623 __ENSO_BENCHMARK_DONE_30_25__:0",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-56",
+          "started_at": 161968.20000004768,
+          "timed_out": false,
+          "duration_ms": 59040
+        },
+        {
+          "bytes": 514,
+          "done": true,
+          "done_at": 218593.5,
+          "exit_code": 0,
+          "first_output_ms": 22240,
+          "index": 26,
+          "marker": "__ENSO_BENCHMARK_DONE_30_26__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-489e-72e1-881b-c0493eac964d\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n23,466\r\n\r\n__ENSO_BENCHMARK_DONE_30_26__:0\r\n",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-489e-72e1-881b-c0493eac964d -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 23,466 __ENSO_BENCHMARK_DONE_30_26__:0",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-57",
+          "started_at": 162958.89999997616,
+          "timed_out": false,
+          "duration_ms": 55635
+        },
+        {
+          "bytes": 511,
+          "done": true,
+          "done_at": 220502.39999997616,
+          "exit_code": 0,
+          "first_output_ms": 21270,
+          "index": 27,
+          "marker": "__ENSO_BENCHMARK_DONE_30_27__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-51a2-7672-9b30-f512f5fd3317\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n426\r\n\r\n__ENSO_BENCHMARK_DONE_30_27__:0\r\n",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-51a2-7672-9b30-f512f5fd3317 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 426 __ENSO_BENCHMARK_DONE_30_27__:0",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-58",
+          "started_at": 164096.10000002384,
+          "timed_out": false,
+          "duration_ms": 56406
+        },
+        {
+          "bytes": 514,
+          "done": true,
+          "done_at": 223961.60000002384,
+          "exit_code": 0,
+          "first_output_ms": 22765,
+          "index": 28,
+          "marker": "__ENSO_BENCHMARK_DONE_30_28__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-527f-7942-a181-588b98aa9d1d\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n25,624\r\n\r\n__ENSO_BENCHMARK_DONE_30_28__:0\r\n",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-527f-7942-a181-588b98aa9d1d -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 25,624 __ENSO_BENCHMARK_DONE_30_28__:0",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-59",
+          "started_at": 165036,
+          "timed_out": false,
+          "duration_ms": 58926
+        },
+        {
+          "bytes": 514,
+          "done": true,
+          "done_at": 225613,
+          "exit_code": 0,
+          "first_output_ms": 24504,
+          "index": 29,
+          "marker": "__ENSO_BENCHMARK_DONE_30_29__",
+          "marker_buffer": "OpenAI Codex v0.135.0\r\n--------\r\nworkdir: /Users/zlb/Code/2026code/EnsoAI\r\nmodel: gpt-5.5\r\nprovider: custom\r\napproval: never\r\nsandbox: read-only\r\nreasoning effort: xhigh\r\nreasoning summaries: none\r\nsession id: 019ea4bc-5e84-71c3-a1fb-fd3f981f6851\r\n--------\r\nuser\r\nReply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.\r\nhook: SessionStart\r\nhook: SessionStart Completed\r\ncodex\r\nBENCHMARK_OK\r\nhook: Stop\r\nhook: Stop Completed\r\ntokens used\r\n11,808\r\n\r\n__ENSO_BENCHMARK_DONE_30_29__:0\r\n",
+          "output_sample": "OpenAI Codex v0.135.0 -------- workdir: /Users/zlb/Code/2026code/EnsoAI model: gpt-5.5 provider: custom approval: never sandbox: read-only reasoning effort: xhigh reasoning summaries: none session id: 019ea4bc-5e84-71c3-a1fb-fd3f981f6851 -------- user Reply with exactly BENCHMARK_OK and nothing else. Do not inspect files or run commands.hook: SessionStarthook: SessionStart Completedcodex BENCHMARK_OKhook: Stophook: Stop Completedtokens used 11,808 __ENSO_BENCHMARK_DONE_30_29__:0",
+          "process_exit_code": 0,
+          "process_signal": null,
+          "session_id": "pty-60",
+          "started_at": 166628.70000004768,
+          "timed_out": false,
+          "duration_ms": 58984
+        }
+      ],
+      "summary": {
+        "app_process": {
+          "avg_total_rss_mib": 5067.4,
+          "max_pid_count": 352,
+          "peak_total_cpu_percent": 394,
+          "peak_total_rss_mib": 9610.3
+        },
+        "avg_duration_ms": 76166,
+        "count": 30,
+        "data_bytes": 27497,
+        "data_events": 328,
+        "duration_p50_ms": 78668,
+        "duration_p95_ms": 85922,
+        "failed": 0,
+        "first_output_p50_ms": 13531,
+        "first_output_p95_ms": 24504,
+        "ok": 30,
+        "session_counts_after": {
+          "agent": 0,
+          "local": 0,
+          "remote": 0,
+          "terminal": 0,
+          "total": 0
+        },
+        "wall_ms": 99498
+      }
+    }
+  ],
+  "label": "app-after",
+  "node_version": "v22.22.3",
+  "platform": "darwin 25.4.0",
+  "raw_json_file": "perf-app-after.raw.json",
+  "spawn_stagger_ms": 100,
+  "timeout_ms": 180000,
+  "total_memory_mib": 24576
+}

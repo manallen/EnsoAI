@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useShallow } from 'zustand/shallow';
 import { normalizePath } from '@/App/storage';
 import type { GlowState } from '@/components/ui/glow-card';
@@ -8,9 +9,10 @@ import { computeHighestOutputState, useAgentSessionsStore } from '@/stores/agent
  * Returns the highest priority state among all sessions in the repo
  */
 export function useRepoOutputState(repoPath: string): GlowState {
+  const normalizedRepoPath = useMemo(() => normalizePath(repoPath), [repoPath]);
+
   return useAgentSessionsStore(
     useShallow((s) => {
-      const normalizedRepoPath = normalizePath(repoPath);
       const repoSessions = s.sessions.filter(
         (session) => normalizePath(session.repoPath) === normalizedRepoPath
       );
@@ -24,9 +26,10 @@ export function useRepoOutputState(repoPath: string): GlowState {
  * Returns the highest priority state among all sessions in the worktree
  */
 export function useWorktreeOutputState(worktreePath: string): GlowState {
+  const normalizedCwd = useMemo(() => normalizePath(worktreePath), [worktreePath]);
+
   return useAgentSessionsStore(
     useShallow((s) => {
-      const normalizedCwd = normalizePath(worktreePath);
       const worktreeSessions = s.sessions.filter(
         (session) => normalizePath(session.cwd) === normalizedCwd
       );

@@ -250,6 +250,7 @@ export type TunnelMode = 'quick' | 'auth';
 export interface HapiSettings {
   enabled: boolean;
   webappPort: number;
+  webappHost: string;
   cliApiToken: string;
   telegramBotToken: string;
   webappUrl: string;

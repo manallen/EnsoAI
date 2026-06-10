@@ -1060,6 +1060,8 @@ export const zhTranslations: Record<string, string> = {
   'Start Hapi server for remote access': '启动 Hapi 服务器以支持远程访问',
   Stop: '停止',
   Configuration: '配置',
+  'Listen Host': '监听地址',
+  'Use 0.0.0.0 to allow LAN access': '使用 0.0.0.0 允许局域网访问',
   'Server Port': '服务端口',
   'Server listening port': '服务器监听端口',
   'Access Token': '访问令牌',
@@ -1071,6 +1073,7 @@ export const zhTranslations: Record<string, string> = {
   'Telegram bot token (optional)': 'Telegram 机器人令牌（可选）',
   'Public URL': '公开 URL',
   'Public URL for Telegram Mini App': 'Telegram Mini App 的公开 URL',
+  'URL used by remote clients and Telegram Mini App': '远程客户端和 Telegram Mini App 使用的 URL',
   'Allowed Chat IDs': '允许的会话 ID',
   'Comma-separated Telegram chat IDs': '用逗号分隔的 Telegram 会话 ID',
   // Cloudflared

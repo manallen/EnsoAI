@@ -1,0 +1,7 @@
+{"file":"context/global.md","reason":"项目技术栈和约定","required":true}
+{"file":"needs/{req}/prd.summary.md","reason":"计划拆解默认使用的产品摘要","required":false,"when_missing":"warn"}
+{"file":"needs/{req}/tech-spec.summary.md","reason":"计划拆解默认使用的技术方案摘要","required":false,"when_missing":"warn"}
+{"file":"needs/{req}/requirements.md","reason":"compat fallback 约束摘要","required":false,"when_missing":"skip"}
+{"file":"design/DESIGN.summary.md","reason":"项目级设计系统摘要（support only）","required":false,"when_missing":"skip"}
+{"file":"needs/{req}/DESIGN.summary.md","reason":"需求级设计覆盖摘要（support only）","required":false,"when_missing":"skip"}
+{"file":"design/tokens/design-tokens.json","reason":"前端任务拆解参考的轻量设计令牌（token-first support）","required":false,"when_missing":"skip"}

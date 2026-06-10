@@ -236,6 +236,7 @@ export const defaultAiPerformanceSettings: AIPerformanceSettings = {
 export const defaultHapiSettings: HapiSettings = {
   enabled: false,
   webappPort: 3006,
+  webappHost: '127.0.0.1',
   cliApiToken: '',
   telegramBotToken: '',
   webappUrl: '',

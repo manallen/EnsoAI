@@ -18,6 +18,8 @@ import {
   saveGroups,
 } from '../storage';
 
+const LEGACY_REPOSITORIES_KEY = 'repositories';
+
 export function useRepositoryState() {
   const [repositories, setRepositories] = useState<Repository[]>([]);
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
@@ -34,7 +36,10 @@ export function useRepositoryState() {
 
     const validGroupIds = new Set(savedGroups.map((g) => g.id));
 
-    const savedRepos = localStorage.getItem(STORAGE_KEYS.REPOSITORIES);
+    const savedReposRaw = localStorage.getItem(STORAGE_KEYS.REPOSITORIES);
+    const legacyReposRaw = localStorage.getItem(LEGACY_REPOSITORIES_KEY);
+    const savedRepos =
+      savedReposRaw && savedReposRaw !== '[]' ? savedReposRaw : legacyReposRaw || savedReposRaw;
     if (savedRepos) {
       try {
         let parsed = JSON.parse(savedRepos) as Repository[];
@@ -51,7 +56,7 @@ export function useRepositoryState() {
           }
           return repo;
         });
-        if (needsMigration) {
+        if (needsMigration || !localStorage.getItem(STORAGE_KEYS.REPOSITORIES)) {
           localStorage.setItem(STORAGE_KEYS.REPOSITORIES, JSON.stringify(parsed));
         }
         setRepositories(parsed);

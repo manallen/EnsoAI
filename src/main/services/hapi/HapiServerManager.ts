@@ -10,6 +10,7 @@ const execAsync = promisify(exec);
 
 export interface HapiConfig {
   webappPort: number;
+  webappHost: string;
   cliApiToken: string;
   telegramBotToken: string;
   webappUrl: string;
@@ -38,6 +39,7 @@ class HapiServerManager extends EventEmitter {
   private process: ChildProcess | null = null;
   private status: HapiStatus = { running: false };
   private ready: boolean = false;
+  private config: HapiConfig | null = null;
 
   // Global installation cache
   private globalStatus: HapiGlobalStatus | null = null;
@@ -167,8 +169,12 @@ class HapiServerManager extends EventEmitter {
       return this.status;
     }
 
+    this.config = config;
+
     const env: Record<string, string> = {
       WEBAPP_PORT: String(config.webappPort),
+      HAPI_LISTEN_PORT: String(config.webappPort),
+      HAPI_LISTEN_HOST: config.webappHost || '127.0.0.1',
     };
 
     if (config.cliApiToken) {
@@ -179,6 +185,7 @@ class HapiServerManager extends EventEmitter {
     }
     if (config.webappUrl) {
       env.WEBAPP_URL = config.webappUrl;
+      env.HAPI_PUBLIC_URL = config.webappUrl;
     }
     if (config.allowedChatIds) {
       env.ALLOWED_CHAT_IDS = config.allowedChatIds;
@@ -235,6 +242,7 @@ class HapiServerManager extends EventEmitter {
         this.ready = false;
         this.status = { running: false, error: error.message };
         this.process = null;
+        this.config = null;
         this.emit('statusChanged', this.status);
       });
 
@@ -243,6 +251,7 @@ class HapiServerManager extends EventEmitter {
         this.ready = false;
         this.status = { running: false };
         this.process = null;
+        this.config = null;
         this.emit('statusChanged', this.status);
       });
 
@@ -273,6 +282,7 @@ class HapiServerManager extends EventEmitter {
       proc.once('exit', () => {
         clearTimeout(timeout);
         this.process = null;
+        this.config = null;
         this.status = { running: false };
         this.emit('statusChanged', this.status);
         resolve(this.status);
@@ -291,10 +301,15 @@ class HapiServerManager extends EventEmitter {
     return this.status;
   }
 
+  getConfig(): HapiConfig | undefined {
+    return this.process ? (this.config ?? undefined) : undefined;
+  }
+
   cleanup(): void {
     if (this.process) {
       killProcessTree(this.process);
       this.process = null;
+      this.config = null;
     }
   }
 }

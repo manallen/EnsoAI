@@ -193,7 +193,7 @@ export function useXterm({
     }
   }, []);
 
-  const fit = useCallback(() => {
+  const fitTerminal = useCallback(() => {
     if (fitAddonRef.current && terminalRef.current && ptyIdRef.current) {
       fitAddonRef.current.fit();
       window.electronAPI.terminal.resize(ptyIdRef.current, {
@@ -820,11 +820,11 @@ export function useXterm({
   useEffect(() => {
     if (isActive && terminalRef.current && !isLoading) {
       requestAnimationFrame(() => {
-        fit();
+        fitTerminal();
         terminalRef.current?.focus();
       });
     }
-  }, [isActive, isLoading, fit]);
+  }, [isActive, isLoading, fitTerminal]);
 
   // Handle window visibility change to refresh terminal rendering
   useEffect(() => {
@@ -842,7 +842,7 @@ export function useXterm({
           }
           terminalRef.current?.refresh(0, terminalRef.current.rows - 1);
           if (isActive) {
-            fit();
+            fitTerminal();
           }
         });
       }
@@ -850,7 +850,7 @@ export function useXterm({
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-  }, [isActive, fit]);
+  }, [isActive, fitTerminal]);
 
   // Handle app focus/blur events (macOS app switching)
   useEffect(() => {
@@ -859,7 +859,7 @@ export function useXterm({
         requestAnimationFrame(() => {
           terminalRef.current?.refresh(0, terminalRef.current.rows - 1);
           if (isActive) {
-            fit();
+            fitTerminal();
           }
         });
       }
@@ -867,7 +867,7 @@ export function useXterm({
 
     window.addEventListener('focus', handleFocus);
     return () => window.removeEventListener('focus', handleFocus);
-  }, [isActive, fit]);
+  }, [isActive, fitTerminal]);
 
   // Silent Reset: Proactively clear texture atlas every 30 mins to prevent long-term fragmentation
   useEffect(() => {
@@ -904,7 +904,7 @@ export function useXterm({
     isLoading,
     settings,
     write,
-    fit,
+    fit: fitTerminal,
     terminal: terminalRef.current,
     findNext,
     findPrevious,

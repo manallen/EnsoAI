@@ -1,0 +1,4 @@
+{"file":"context/global.md","reason":"项目技术栈和约定","required":true}
+{"file":"needs/{req}/context.md","reason":"已有执行备注和问题背景","required":false,"when_missing":"skip"}
+{"glob":"memory/issues/*.md","reason":"相关问题模式记忆","required":false,"match":"by_tag","source_index":"memory/MEMORY-INDEX.md"}
+{"glob":"memory/instincts/*.md","reason":"相关修复本能","required":false,"match":"by_trigger","source_index":"memory/MEMORY-INDEX.md"}

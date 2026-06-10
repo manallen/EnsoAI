@@ -1,0 +1,8 @@
+{"file":"context/global.md","reason":"项目技术栈和全局设计约定","required":true}
+{"file":"needs/{req}/prd.md","reason":"设计阶段的主产品输入","required":true}
+{"file":"needs/{req}/DESIGN.summary.md","reason":"需求级设计迭代摘要（优先于项目级设计系统）","required":false,"when_missing":"skip"}
+{"file":"needs/{req}/DESIGN.md","reason":"需求级设计详细稿（仅在迭代/局部回查时使用）","required":false,"when_missing":"skip"}
+{"file":"needs/{req}/context.md","reason":"需求级 `## 设计摘要` section（support only，非整份 history）","required":false,"when_missing":"skip"}
+{"file":"design/DESIGN.summary.md","reason":"项目级设计系统摘要（support only，非默认产物目标）","required":false,"when_missing":"skip"}
+{"file":"design/tokens/design-tokens.json","reason":"共享设计令牌（token-first support）","required":false,"when_missing":"skip"}
+{"file":"memory/patterns/ui-anti-patterns.md","reason":"设计反模式自检依据","required":false,"when_missing":"skip"}

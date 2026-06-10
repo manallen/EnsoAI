@@ -47,6 +47,15 @@
     }
   },
   "files": {
-    "includes": ["**", "!**/node_modules", "!**/out", "!**/dist", "!**/*.min.js", "!**/*.css"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/out",
+      "!**/dist",
+      "!**/.vibe",
+      "!**/.vibe",
+      "!**/*.min.js",
+      "!**/*.css"
+    ]
   }
 }
