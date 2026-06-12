@@ -1722,7 +1722,7 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
             <div
               key={sessionId}
               className={
-                shouldShow ? 'absolute h-full' : 'absolute h-full opacity-0 pointer-events-none'
+                shouldShow ? 'absolute h-full' : 'absolute h-full invisible pointer-events-none'
               }
               style={{
                 left: `${left}%`,

@@ -192,7 +192,7 @@ export function QuickTerminalModal({
       className={cn(
         'fixed inset-0 z-50 transition-all',
         // 打开时显示半透明背景
-        open ? 'bg-black/20 backdrop-blur-[2px]' : 'opacity-0 pointer-events-none'
+        open ? 'bg-black/20 backdrop-blur-[2px]' : 'opacity-0 invisible pointer-events-none'
       )}
     >
       {/* Modal 窗口 */}

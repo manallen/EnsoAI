@@ -856,7 +856,7 @@ export function TerminalPanel({ repoPath, cwd, isActive = false }: TerminalPanel
             className={
               isCurrentWorktree
                 ? 'relative h-full w-full'
-                : 'absolute inset-0 opacity-0 pointer-events-none'
+                : 'absolute inset-0 invisible pointer-events-none'
             }
           >
             {/* Tab bars row - flex layout */}
@@ -919,7 +919,7 @@ export function TerminalPanel({ repoPath, cwd, isActive = false }: TerminalPanel
                     className={
                       isTabVisible
                         ? 'absolute h-full'
-                        : 'absolute h-full opacity-0 pointer-events-none'
+                        : 'absolute h-full invisible pointer-events-none'
                     }
                     style={{
                       left: `${position.left}%`,

@@ -55,6 +55,24 @@ import type { InspectPayload, WebInspectorStatus } from '@shared/types/webInspec
 import { contextBridge, ipcRenderer, shell, webUtils } from 'electron';
 import pkg from '../../package.json';
 
+// Single TERMINAL_DATA subscription routing to per-terminal listeners.
+// With N terminals, per-listener filtering would invoke N callbacks per
+// message (O(N) fan-out); a Map lookup keeps dispatch at O(1).
+const terminalDataListeners = new Map<string, Set<(data: string) => void>>();
+let terminalDataSubscribed = false;
+
+function ensureTerminalDataSubscription(): void {
+  if (terminalDataSubscribed) return;
+  terminalDataSubscribed = true;
+  ipcRenderer.on(IPC_CHANNELS.TERMINAL_DATA, (_, event: { id: string; data: string }) => {
+    const listeners = terminalDataListeners.get(event.id);
+    if (!listeners) return;
+    for (const listener of listeners) {
+      listener(event.data);
+    }
+  });
+}
+
 const electronAPI = {
   // Git
   git: {
@@ -394,10 +412,22 @@ const electronAPI = {
     destroy: (id: string): Promise<void> => ipcRenderer.invoke(IPC_CHANNELS.TERMINAL_DESTROY, id),
     getActivity: (id: string): Promise<boolean> =>
       ipcRenderer.invoke(IPC_CHANNELS.TERMINAL_GET_ACTIVITY, id),
-    onData: (callback: (event: { id: string; data: string }) => void): (() => void) => {
-      const handler = (_: unknown, event: { id: string; data: string }) => callback(event);
-      ipcRenderer.on(IPC_CHANNELS.TERMINAL_DATA, handler);
-      return () => ipcRenderer.off(IPC_CHANNELS.TERMINAL_DATA, handler);
+    onData: (id: string, callback: (data: string) => void): (() => void) => {
+      ensureTerminalDataSubscription();
+      let listeners = terminalDataListeners.get(id);
+      if (!listeners) {
+        listeners = new Set();
+        terminalDataListeners.set(id, listeners);
+      }
+      listeners.add(callback);
+      return () => {
+        const set = terminalDataListeners.get(id);
+        if (!set) return;
+        set.delete(callback);
+        if (set.size === 0) {
+          terminalDataListeners.delete(id);
+        }
+      };
     },
     onExit: (
       callback: (event: { id: string; exitCode: number; signal?: number }) => void

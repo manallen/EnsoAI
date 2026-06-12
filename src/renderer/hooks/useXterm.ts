@@ -610,49 +610,47 @@ export function useXterm({
 
       // Handle data from pty with debounced buffering for smooth rendering
       // 30ms delay merges fragmented TUI packets (clear + write)
-      const cleanup = window.electronAPI.terminal.onData((event) => {
-        if (event.id === ptyId) {
-          // Buffer data
-          writeBufferRef.current += event.data;
+      const cleanup = window.electronAPI.terminal.onData(ptyId, (data) => {
+        // Buffer data
+        writeBufferRef.current += data;
 
-          if (!isFlushPendingRef.current) {
-            isFlushPendingRef.current = true;
-            setTimeout(() => {
-              if (writeBufferRef.current.length > 0) {
-                const bufferedData = writeBufferRef.current;
+        if (!isFlushPendingRef.current) {
+          isFlushPendingRef.current = true;
+          setTimeout(() => {
+            if (writeBufferRef.current.length > 0) {
+              const bufferedData = writeBufferRef.current;
 
-                // If user has scrolled up to view history, lock their viewport position.
-                // TUI control sequences (CSI 2J, CSI 3J, alternate buffer switch)
-                // can reset or scroll the viewport regardless of isUserScrolling.
-                // We preserve the user's scroll offset from the bottom.
-                const buffer = terminal.buffer.active;
-                const offsetFromBottom = buffer.baseY - buffer.viewportY;
-                const shouldLockViewport = offsetFromBottom > 0;
-                const savedOffsetFromBottom = shouldLockViewport ? offsetFromBottom : 0;
+              // If user has scrolled up to view history, lock their viewport position.
+              // TUI control sequences (CSI 2J, CSI 3J, alternate buffer switch)
+              // can reset or scroll the viewport regardless of isUserScrolling.
+              // We preserve the user's scroll offset from the bottom.
+              const buffer = terminal.buffer.active;
+              const offsetFromBottom = buffer.baseY - buffer.viewportY;
+              const shouldLockViewport = offsetFromBottom > 0;
+              const savedOffsetFromBottom = shouldLockViewport ? offsetFromBottom : 0;
 
-                terminal.write(bufferedData);
+              terminal.write(bufferedData);
 
-                // Restore viewport if it was moved by the write
-                if (shouldLockViewport) {
-                  const targetViewportY = terminal.buffer.active.baseY - savedOffsetFromBottom;
-                  const currentViewportY = terminal.buffer.active.viewportY;
-                  if (targetViewportY !== currentViewportY) {
-                    terminal.scrollLines(targetViewportY - currentViewportY);
-                  }
+              // Restore viewport if it was moved by the write
+              if (shouldLockViewport) {
+                const targetViewportY = terminal.buffer.active.baseY - savedOffsetFromBottom;
+                const currentViewportY = terminal.buffer.active.viewportY;
+                if (targetViewportY !== currentViewportY) {
+                  terminal.scrollLines(targetViewportY - currentViewportY);
                 }
-
-                // Hide loading only after receiving visible content (not just control sequences)
-                if (!hasReceivedDataRef.current && hasVisibleContent(bufferedData)) {
-                  hasReceivedDataRef.current = true;
-                  setIsLoading(false);
-                }
-                // Call onData after write to avoid React re-render storm
-                onDataRef.current?.(bufferedData);
-                writeBufferRef.current = '';
               }
-              isFlushPendingRef.current = false;
-            }, 30);
-          }
+
+              // Hide loading only after receiving visible content (not just control sequences)
+              if (!hasReceivedDataRef.current && hasVisibleContent(bufferedData)) {
+                hasReceivedDataRef.current = true;
+                setIsLoading(false);
+              }
+              // Call onData after write to avoid React re-render storm
+              onDataRef.current?.(bufferedData);
+              writeBufferRef.current = '';
+            }
+            isFlushPendingRef.current = false;
+          }, 30);
         }
       });
       cleanupRef.current = cleanup;

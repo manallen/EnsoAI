@@ -450,9 +450,7 @@ export function HapiSettings() {
                   type="text"
                   value={localHost}
                   onChange={(e) => setLocalHost(e.target.value)}
-                  onBlur={() =>
-                    setHapiSettings({ webappHost: localHost.trim() || '127.0.0.1' })
-                  }
+                  onBlur={() => setHapiSettings({ webappHost: localHost.trim() || '127.0.0.1' })}
                   placeholder="127.0.0.1"
                   className="w-44 font-mono text-xs"
                 />

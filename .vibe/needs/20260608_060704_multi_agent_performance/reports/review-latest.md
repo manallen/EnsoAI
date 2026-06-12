@@ -1,101 +1,59 @@
-# Code Review: multi-agent-performance
+# Review: 多 Agent 性能优化第一批（IPC 合并 + 分发器 + 隐藏终端 paint 消除）
 
-## Scope
+- 日期: 2026-06-10
+- 范围: 7 文件, +179/-60
+- 验收项: ① 主进程 PTY 数据按会话合并发送 ② preload 单一分发器按 ptyId 路由 ③ 隐藏终端跳过 paint
+- 模式: 主会话 inline review（全部 diff 文件已在上下文，未拉起独立 reviewer）
+- 前序报告: `review-20260608-sessionmanager-iteration.md`（前一会话的 SessionManager 方案迭代，与本批实现无直接关联）
 
-- Reviewed current working tree changes for requirement `multi-agent-performance`.
-- Primary files reviewed: `SessionManager`, session lifecycle/batcher helpers, renderer session event bus, `useXterm`, `AgentPanel`, `AgentTerminal`, benchmark metrics IPC, and performance scripts.
+## 结论
 
-## Findings
+**PASS** — 无 Critical/Major 问题，typecheck/biome/vitest 全部通过，建议继续。
+
+## 问题分级
 
 ### Critical
-
-- None.
+无。
 
 ### Major
+无。
 
-- None remaining.
+### Minor
 
-### Fixed During Review
+1. **`DATA_FLUSH_MAX_BYTES` 实际计量的是 UTF-16 code unit 数而非字节**
+   `src/main/ipc/terminal.ts` — `buffer.length >= DATA_FLUSH_MAX_BYTES`。多字节字符场景下实际内存约为 2 倍（~128KB），不影响正确性，仅命名不精确。
 
-- `SessionManager.detach` now flushes pending output batch before removing the window attachment. Without this, a fast hide/switch/re-attach inside the 16ms batch window could replay the same buffered bytes and then flush the old pending batch, producing duplicate terminal output.
-- `useXterm` delayed write flush now checks that the captured terminal is still current before writing. This avoids writing into a disposed xterm instance after unmount or remount races.
-- Removed duplicate old benchmark script `scripts/perf/enso-app-session-benchmark.mjs`; `scripts/perf/enso-session-benchmark.mjs` is the maintained app-session benchmark used by reports.
+2. **`destroyByWorkdir` 路径上 batcher Map 条目泄漏（已知接受）**
+   `PtyManager.destroyByWorkdir()` 由 worktree 删除流程直接调用，绕过 `terminal.ts` 的 exit/destroy 钩子，对应 batcher 条目残留（每条 ~几十字节闭包，timer 最多 16ms 后自然结束，残余数据发往无监听的 id 被分发器 O(1) 丢弃，无副作用）。频率低、体积小，接受。
 
-## Requirements Compliance
+### Suggestion
 
-- Keeps Electron + React + node-pty + xterm stack.
-- Keeps hidden/switched agent sessions alive by using persistent detach buffering instead of PTY destroy.
-- Reduces renderer amplification through single session event bus and AgentTerminal on-demand mounting.
-- Reduces IPC amplification through per-session output batching and exit/dead flush.
-- Reduces background activity polling by stopping `getActivity` polling for inactive terminals.
-- Provides repeatable benchmark scripts and captured 10/20/30 Codex evidence.
+- 渲染端 `useXterm` 的 30ms 合并窗口与主进程 16ms 窗口叠加，最坏回显延迟 ~46ms（首块立发机制下典型场景仍为 ~30ms，与改动前持平）。如后续有输入延迟反馈，可将渲染端 30ms 降为 1 个 rAF。
 
-## Evidence Checked
+## 通过项
 
-- `pnpm test -- src/main/services/session/__tests__/sessionOutputBatcher.test.ts src/main/services/session/__tests__/sessionLifecycle.test.ts src/renderer/lib/__tests__/sessionEventBus.test.ts`: passed, 50 tests.
-- `pnpm typecheck`: passed.
-- Targeted Biome check for changed review files and perf scripts: passed with known `fit()` false-positive warnings in `useXterm`; exit code was 0.
-- Performance reports exist for CLI baseline/after and EnsoAI app-session after benchmark.
+1. **数据顺序与 exit 时序正确**：batcher 同步 send 保序；exit 回调先 `flush()` 再发 `TERMINAL_EXIT`，渲染端永远先收数据后收退出。
+2. **首块立发（leading-edge）设计**：空闲首 chunk 零延迟直发，回显延迟与改动前一致；持续输出时稳态 ≤2 条消息/16ms/终端，消息量降一个数量级以上。
+3. **生命周期清理完整**：TERMINAL_DESTROY、exit 回调、sender destroyed（按 ownerId）、destroyAll/destroyAllAndWait 四条路径均清理 batcher；preload 侧监听 Set 空时删除 Map 条目。
+4. **无监听时序回归**：`onData(ptyId, cb)` 注册发生在 `await create()` 同一 task 内，IPC 事件按 macrotask 排队，不会注册前丢数据（与旧实现一致）。
+5. **`invisible` 替换 `opacity-0` 安全**：保留布局（xterm fit/measure 不受影响），跳过 paint/合成；QuickTerminalModal 配合 `transition-all`，visibility 在过渡末尾翻转，淡出动画保留；隐藏元素已 `pointer-events-none` 且无聚焦路径。
+6. **死代码清理**：`useTerminalData`（全仓无调用方）随 API 改签名一并移除。
+7. **验证**：`tsc --noEmit` ✓、`biome check`（7 文件）✓、`vitest run`（34 用例）✓。
 
-## Residual Risk
+## Non-blocking extras
 
-- Full `pnpm lint` still has existing/out-of-scope repository diagnostics documented in `verification.md`.
-- EnsoAI app-session benchmark has after data only. The original code did not have app benchmark counters/CDP harness, so app-level before/after percentage is intentionally not claimed.
-- The app-session benchmark drives preload session APIs directly; it does not click through AgentPanel UI. AgentPanel/xterm reduction is verified through code review, typecheck, smoke, and session cleanup evidence.
+1. AgentPanel 挂载所有跨仓库会话的架构未动（属后续优化范围，本批不扩面）。
+2. `terminalRenderer` 默认仍为 `'dom'`（依赖后续 WebGL 池化才能安全改默认）。
+3. 渲染端 onExit 仍为通配监听——exit 事件频率极低，无性能意义，保持现状。
 
-## Verdict
+## 需求合规结论
 
-No blocking review issues remain for this requirement. Continue to `vibe test` closeout.
+变更严格落在承诺的 2+3+1 三项内，未扩展到第 4 条（隐藏暂停写入）和第 5 条（WebGL 池化）。完成通知 / 空闲检测链路（`handleData`）不受影响——本批未改变数据到达渲染端的语义，仅减少消息条数与隐藏元素绘制。
 
----
+## 设计一致性
 
-## Re-Review: Agent Batch Create Menu Fix
+无 UI 视觉变更，不适用。
 
-### Scope
+## 建议
 
-- Reviewed the follow-up fix for adding a default `3` batch count to Agent selection menus.
-- Files reviewed:
-  - `src/renderer/components/chat/AgentCreateCountInput.tsx`
-  - `src/renderer/components/chat/AgentPanel.tsx`
-  - `src/renderer/components/chat/AgentGroup.tsx`
-  - `src/renderer/components/chat/SessionBar.tsx`
-
-### Findings
-
-#### Critical
-
-- None.
-
-#### Major
-
-- None remaining.
-
-### Fixed During Re-Review
-
-- The prior Major finding is fixed: the screenshot-relevant `SessionBar` top `+` Agent menu now renders the batch count control and passes `count` through `onNewSessionWithAgent`.
-- `AgentGroup` empty-group Agent menu now uses the same batch count control and passes `count`.
-- `AgentPanel` empty-state Agent menu now uses the shared `AgentCreateCountInput` instead of duplicate local input markup.
-- `handleNewSessionWithAgent` remains the single creation path and clamps count before creating sessions.
-
-### Requirements Compliance
-
-- Default count is `3`.
-- Agent menu count is shared across empty panel, empty group, and existing-session `SessionBar` menus.
-- Normal direct `New Session` button still creates one session.
-- Batch creation activates the last created session in the target group.
-- Count is clamped to `1..30`.
-
-### Evidence Checked
-
-- `pnpm typecheck`: passed.
-- `pnpm exec biome check src/renderer/components/chat/AgentCreateCountInput.tsx src/renderer/components/chat/AgentPanel.tsx src/renderer/components/chat/AgentGroup.tsx src/renderer/components/chat/SessionBar.tsx`: passed.
-- `pnpm test -- src/main/services/session/__tests__/sessionOutputBatcher.test.ts src/main/services/session/__tests__/sessionLifecycle.test.ts src/renderer/lib/__tests__/sessionEventBus.test.ts`: passed, 50 tests.
-- Source review confirmed `AgentPanel -> AgentGroup -> SessionBar -> handleNewSessionWithAgent` forwards the optional `count` argument.
-
-### Residual Risk
-
-- UI was not launched in Electron during this re-review to avoid adding node load after the reported freeze. The behavior was verified through typecheck, targeted Biome, tests, and source trace.
-
-### Verdict
-
-No blocking review issues remain after the Agent batch-create menu fix.
+继续推进。后续第 4 条（后台暂停写入）实施时重点回归：后台 agent 完成通知、tab 标题更新、切 tab 后画面完整性。

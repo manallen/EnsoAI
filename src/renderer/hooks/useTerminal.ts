@@ -59,12 +59,3 @@ export function useTerminal() {
     resizeTerminal,
   };
 }
-
-export function useTerminalData(onData: (id: string, data: string) => void) {
-  useEffect(() => {
-    const unsubscribe = window.electronAPI.terminal.onData(({ id, data }) => {
-      onData(id, data);
-    });
-    return unsubscribe;
-  }, [onData]);
-}
