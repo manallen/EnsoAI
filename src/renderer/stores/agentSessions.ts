@@ -249,9 +249,22 @@ export const useAgentSessionsStore = create<AgentSessionsState>()(
       }),
 
     updateSession: (id, updates) =>
-      set((state) => ({
-        sessions: state.sessions.map((s) => (s.id === id ? { ...s, ...updates } : s)),
-      })),
+      set((state) => {
+        const updateKeys = Object.keys(updates) as Array<keyof Session>;
+        if (updateKeys.length === 0) return state;
+
+        const sessionIndex = state.sessions.findIndex((session) => session.id === id);
+        if (sessionIndex === -1) return state;
+
+        const session = state.sessions[sessionIndex];
+        const hasChanges = updateKeys.some((key) => session[key] !== updates[key]);
+        if (!hasChanges) return state;
+
+        const sessions = [...state.sessions];
+        sessions[sessionIndex] = { ...session, ...updates };
+
+        return { sessions };
+      }),
 
     setActiveId: (repoPath, cwd, sessionId) =>
       set((state) => ({

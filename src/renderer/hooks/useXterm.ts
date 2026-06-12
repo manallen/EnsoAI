@@ -23,6 +23,48 @@ const ANSI_ESCAPE_REGEX = /\x1b\[[0-9;?]*[a-zA-Z]/g;
 
 // Maximum length for session name derived from terminal current line
 const SESSION_NAME_MAX_LENGTH = 36;
+const HIDDEN_WRITE_BUFFER_MAX_LENGTH = 1_000_000;
+
+type TerminalWindowEvent = 'resize' | 'visibilitychange' | 'focus';
+type TerminalWindowEventHandler = () => void;
+
+const terminalWindowEventSubscribers: Record<
+  TerminalWindowEvent,
+  Set<TerminalWindowEventHandler>
+> = {
+  resize: new Set(),
+  visibilitychange: new Set(),
+  focus: new Set(),
+};
+
+let terminalWindowEventsSubscribed = false;
+
+function emitTerminalWindowEvent(event: TerminalWindowEvent): void {
+  for (const handler of terminalWindowEventSubscribers[event]) {
+    handler();
+  }
+}
+
+function ensureTerminalWindowEventListeners(): void {
+  if (terminalWindowEventsSubscribed) return;
+  terminalWindowEventsSubscribed = true;
+
+  window.addEventListener('resize', () => emitTerminalWindowEvent('resize'));
+  document.addEventListener('visibilitychange', () => emitTerminalWindowEvent('visibilitychange'));
+  window.addEventListener('focus', () => emitTerminalWindowEvent('focus'));
+}
+
+function subscribeTerminalWindowEvent(
+  event: TerminalWindowEvent,
+  handler: TerminalWindowEventHandler
+): () => void {
+  ensureTerminalWindowEventListeners();
+  terminalWindowEventSubscribers[event].add(handler);
+
+  return () => {
+    terminalWindowEventSubscribers[event].delete(handler);
+  };
+}
 
 function hasVisibleContent(data: string): boolean {
   // Remove all ANSI escape sequences
@@ -39,6 +81,7 @@ export interface UseXtermOptions {
   };
   env?: Record<string, string>;
   isActive?: boolean;
+  isVisible?: boolean;
   initialCommand?: string;
   onExit?: () => void;
   onData?: (data: string) => void;
@@ -121,6 +164,7 @@ export function useXterm({
   command,
   env,
   isActive = true,
+  isVisible = true,
   initialCommand,
   onExit,
   onData,
@@ -175,6 +219,9 @@ export function useXterm({
   // Track if this terminal should respond to global shortcuts
   const isActiveRef = useRef(isActive);
   isActiveRef.current = isActive;
+  // Track whether it is worth updating xterm's DOM renderer.
+  const isVisibleRef = useRef(isVisible);
+  isVisibleRef.current = isVisible;
   // Memoize command key to avoid dependency array issues
   const commandKey = useMemo(
     () =>
@@ -185,7 +232,98 @@ export function useXterm({
   );
   // rAF write buffer for smooth rendering
   const writeBufferRef = useRef('');
+  const hiddenWriteChunksRef = useRef<string[]>([]);
+  const hiddenWriteBufferLengthRef = useRef(0);
   const isFlushPendingRef = useRef(false);
+  const writeFlushTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const appendHiddenWriteBuffer = useCallback((data: string) => {
+    if (data.length >= HIDDEN_WRITE_BUFFER_MAX_LENGTH) {
+      const tailStart = data.length - HIDDEN_WRITE_BUFFER_MAX_LENGTH;
+      const lineStart = data.indexOf('\n', tailStart);
+      const tail = data.slice(lineStart >= 0 ? lineStart + 1 : tailStart);
+      hiddenWriteChunksRef.current = [tail];
+      hiddenWriteBufferLengthRef.current = tail.length;
+      return;
+    }
+
+    hiddenWriteChunksRef.current.push(data);
+    hiddenWriteBufferLengthRef.current += data.length;
+
+    while (hiddenWriteBufferLengthRef.current > HIDDEN_WRITE_BUFFER_MAX_LENGTH) {
+      const firstChunk = hiddenWriteChunksRef.current[0];
+      if (!firstChunk) break;
+
+      const excess = hiddenWriteBufferLengthRef.current - HIDDEN_WRITE_BUFFER_MAX_LENGTH;
+      if (firstChunk.length <= excess) {
+        hiddenWriteChunksRef.current.shift();
+        hiddenWriteBufferLengthRef.current -= firstChunk.length;
+        continue;
+      }
+
+      const lineStart = firstChunk.indexOf('\n', excess);
+      const keepStart = lineStart >= 0 ? lineStart + 1 : excess;
+      hiddenWriteChunksRef.current[0] = firstChunk.slice(keepStart);
+      hiddenWriteBufferLengthRef.current -= keepStart;
+      break;
+    }
+  }, []);
+
+  const takeHiddenWriteBuffer = useCallback(() => {
+    const chunks = hiddenWriteChunksRef.current;
+    if (chunks.length === 0) return '';
+
+    hiddenWriteChunksRef.current = [];
+    hiddenWriteBufferLengthRef.current = 0;
+    return chunks.join('');
+  }, []);
+
+  const writeToVisibleTerminal = useCallback((data: string) => {
+    const terminal = terminalRef.current;
+    if (!terminal) return;
+
+    // If user has scrolled up to view history, lock their viewport position.
+    // TUI control sequences (CSI 2J, CSI 3J, alternate buffer switch)
+    // can reset or scroll the viewport regardless of isUserScrolling.
+    const buffer = terminal.buffer.active;
+    const offsetFromBottom = buffer.baseY - buffer.viewportY;
+    const shouldLockViewport = offsetFromBottom > 0;
+    const savedOffsetFromBottom = shouldLockViewport ? offsetFromBottom : 0;
+
+    terminal.write(data);
+
+    // Restore viewport if it was moved by the write.
+    if (shouldLockViewport) {
+      const targetViewportY = terminal.buffer.active.baseY - savedOffsetFromBottom;
+      const currentViewportY = terminal.buffer.active.viewportY;
+      if (targetViewportY !== currentViewportY) {
+        terminal.scrollLines(targetViewportY - currentViewportY);
+      }
+    }
+  }, []);
+
+  const flushBufferedData = useCallback(() => {
+    if (writeBufferRef.current.length === 0) return;
+
+    const bufferedData = writeBufferRef.current;
+    writeBufferRef.current = '';
+
+    if (isVisibleRef.current) {
+      const hiddenData = takeHiddenWriteBuffer();
+      writeToVisibleTerminal(hiddenData.length > 0 ? hiddenData + bufferedData : bufferedData);
+    } else {
+      appendHiddenWriteBuffer(bufferedData);
+    }
+
+    // Hide loading only after receiving visible content (not just control sequences).
+    if (!hasReceivedDataRef.current && hasVisibleContent(bufferedData)) {
+      hasReceivedDataRef.current = true;
+      setIsLoading(false);
+    }
+
+    // Call onData after buffering/render decision to avoid React re-render storm.
+    onDataRef.current?.(bufferedData);
+  }, [appendHiddenWriteBuffer, takeHiddenWriteBuffer, writeToVisibleTerminal]);
 
   const write = useCallback((data: string) => {
     if (ptyIdRef.current) {
@@ -611,45 +749,14 @@ export function useXterm({
       // Handle data from pty with debounced buffering for smooth rendering
       // 30ms delay merges fragmented TUI packets (clear + write)
       const cleanup = window.electronAPI.terminal.onData(ptyId, (data) => {
-        // Buffer data
         writeBufferRef.current += data;
 
         if (!isFlushPendingRef.current) {
           isFlushPendingRef.current = true;
-          setTimeout(() => {
-            if (writeBufferRef.current.length > 0) {
-              const bufferedData = writeBufferRef.current;
-
-              // If user has scrolled up to view history, lock their viewport position.
-              // TUI control sequences (CSI 2J, CSI 3J, alternate buffer switch)
-              // can reset or scroll the viewport regardless of isUserScrolling.
-              // We preserve the user's scroll offset from the bottom.
-              const buffer = terminal.buffer.active;
-              const offsetFromBottom = buffer.baseY - buffer.viewportY;
-              const shouldLockViewport = offsetFromBottom > 0;
-              const savedOffsetFromBottom = shouldLockViewport ? offsetFromBottom : 0;
-
-              terminal.write(bufferedData);
-
-              // Restore viewport if it was moved by the write
-              if (shouldLockViewport) {
-                const targetViewportY = terminal.buffer.active.baseY - savedOffsetFromBottom;
-                const currentViewportY = terminal.buffer.active.viewportY;
-                if (targetViewportY !== currentViewportY) {
-                  terminal.scrollLines(targetViewportY - currentViewportY);
-                }
-              }
-
-              // Hide loading only after receiving visible content (not just control sequences)
-              if (!hasReceivedDataRef.current && hasVisibleContent(bufferedData)) {
-                hasReceivedDataRef.current = true;
-                setIsLoading(false);
-              }
-              // Call onData after write to avoid React re-render storm
-              onDataRef.current?.(bufferedData);
-              writeBufferRef.current = '';
-            }
+          writeFlushTimerRef.current = setTimeout(() => {
+            flushBufferedData();
             isFlushPendingRef.current = false;
+            writeFlushTimerRef.current = null;
           }, 30);
         }
       });
@@ -662,12 +769,7 @@ export function useXterm({
           // Wait for any pending data events to arrive (IPC race condition)
           setTimeout(() => {
             // Flush any remaining buffered data
-            if (writeBufferRef.current.length > 0) {
-              const bufferedData = writeBufferRef.current;
-              terminal.write(bufferedData);
-              onDataRef.current?.(bufferedData);
-              writeBufferRef.current = '';
-            }
+            flushBufferedData();
             onExitRef.current?.();
           }, 30);
         }
@@ -691,7 +793,7 @@ export function useXterm({
       terminal.writeln(`\x1b[31mFailed to start terminal.\x1b[0m`);
       terminal.writeln(`\x1b[33mError: ${error}\x1b[0m`);
     }
-  }, [cwd, command, shellConfig, commandKey, terminalRenderer]);
+  }, [cwd, command, shellConfig, commandKey, terminalRenderer, flushBufferedData]);
 
   useEffect(() => {
     const shouldActivate = isActive || initialCommandRef.current;
@@ -724,6 +826,14 @@ export function useXterm({
       hasBeenActivatedRef.current = false;
       hasReceivedDataRef.current = false;
       createRequestIdRef.current += 1;
+      if (writeFlushTimerRef.current) {
+        clearTimeout(writeFlushTimerRef.current);
+        writeFlushTimerRef.current = null;
+      }
+      writeBufferRef.current = '';
+      hiddenWriteChunksRef.current = [];
+      hiddenWriteBufferLengthRef.current = 0;
+      isFlushPendingRef.current = false;
       cleanupRef.current?.();
       exitCleanupRef.current?.();
       if (ptyIdRef.current) {
@@ -762,9 +872,26 @@ export function useXterm({
     }
   }, [settings]);
 
+  // Replay recent hidden output only when the terminal is visible again.
+  useEffect(() => {
+    if (!isVisible || !terminalRef.current) return;
+
+    const hiddenData = takeHiddenWriteBuffer();
+    if (hiddenData.length > 0) {
+      writeToVisibleTerminal(hiddenData);
+    }
+
+    requestAnimationFrame(() => {
+      if (!terminalRef.current) return;
+      fitTerminal();
+      terminalRef.current.refresh(0, terminalRef.current.rows - 1);
+    });
+  }, [isVisible, fitTerminal, takeHiddenWriteBuffer, writeToVisibleTerminal]);
+
   // Handle resize
   useEffect(() => {
     const handleResize = () => {
+      if (!isVisibleRef.current) return;
       if (fitAddonRef.current && terminalRef.current && ptyIdRef.current) {
         fitAddonRef.current.fit();
         window.electronAPI.terminal.resize(ptyIdRef.current, {
@@ -791,7 +918,7 @@ export function useXterm({
       };
     })();
 
-    window.addEventListener('resize', debouncedResize);
+    const unsubscribeResize = subscribeTerminalWindowEvent('resize', debouncedResize);
 
     const observer = new ResizeObserver(debouncedResize);
     if (containerRef.current) {
@@ -808,7 +935,7 @@ export function useXterm({
     }
 
     return () => {
-      window.removeEventListener('resize', debouncedResize);
+      unsubscribeResize();
       observer.disconnect();
       intersectionObserver.disconnect();
     };
@@ -827,7 +954,7 @@ export function useXterm({
   // Handle window visibility change to refresh terminal rendering
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (!document.hidden && terminalRef.current) {
+      if (!document.hidden && isVisibleRef.current && terminalRef.current) {
         requestAnimationFrame(() => {
           // Clear WebGL texture atlas when page becomes visible (GPU resources may have been reclaimed)
           const addon = rendererAddonRef.current;
@@ -846,14 +973,13 @@ export function useXterm({
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    return subscribeTerminalWindowEvent('visibilitychange', handleVisibilityChange);
   }, [isActive, fitTerminal]);
 
   // Handle app focus/blur events (macOS app switching)
   useEffect(() => {
     const handleFocus = () => {
-      if (terminalRef.current) {
+      if (isVisibleRef.current && terminalRef.current) {
         requestAnimationFrame(() => {
           terminalRef.current?.refresh(0, terminalRef.current.rows - 1);
           if (isActive) {
@@ -863,8 +989,7 @@ export function useXterm({
       }
     };
 
-    window.addEventListener('focus', handleFocus);
-    return () => window.removeEventListener('focus', handleFocus);
+    return subscribeTerminalWindowEvent('focus', handleFocus);
   }, [isActive, fitTerminal]);
 
   // Silent Reset: Proactively clear texture atlas every 30 mins to prevent long-term fragmentation

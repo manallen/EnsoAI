@@ -46,6 +46,24 @@ interface AgentPanelProps {
   onSwitchWorktree?: (worktreePath: string) => void;
 }
 
+interface AgentSessionInfo {
+  worktreePath: string;
+  state: AgentGroupState;
+  group: AgentGroupType;
+  groupIndex: number;
+  session: Session;
+}
+
+function getGroupPositions(state: AgentGroupState): { left: number; width: number }[] {
+  const positions: { left: number; width: number }[] = [];
+  let cumulative = 0;
+  for (const percent of state.flexPercents) {
+    positions.push({ left: cumulative, width: percent });
+    cumulative += percent;
+  }
+  return positions;
+}
+
 // Agent display names and commands
 const AGENT_INFO: Record<string, { name: string; command: string }> = {
   claude: { name: 'Claude', command: 'claude' },
@@ -299,6 +317,13 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
 
   // Use zustand store for sessions and group states - state persists even when component unmounts
   const allSessions = useAgentSessionsStore((state) => state.sessions);
+  const sessionsById = useMemo(() => {
+    const map = new Map<string, Session>();
+    for (const session of allSessions) {
+      map.set(session.id, session);
+    }
+    return map;
+  }, [allSessions]);
   const addSession = useAgentSessionsStore((state) => state.addSession);
   const removeSession = useAgentSessionsStore((state) => state.removeSession);
   const updateSession = useAgentSessionsStore((state) => state.updateSession);
@@ -948,7 +973,8 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
   }, [groups, activeGroupId, cwd, repoPath, setActiveId, updateCurrentGroupState]);
 
   const handleInitialized = useCallback(
-    (id: string) => {
+    (id?: string) => {
+      if (!id) return;
       // Read session from store directly to avoid stale closure
       const session = useAgentSessionsStore.getState().sessions.find((s) => s.id === id);
       if (!session) return;
@@ -964,14 +990,16 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
   );
 
   const handleActivated = useCallback(
-    (id: string) => {
+    (id?: string) => {
+      if (!id) return;
       updateSession(id, { activated: true });
     },
     [updateSession]
   );
 
   const handleActivatedWithFirstLine = useCallback(
-    (id: string, line: string) => {
+    (id: string | undefined, line: string) => {
+      if (!id) return;
       const session = allSessions.find((s) => s.id === id);
       if (!session || !line.trim() || !isCursorAgent(session.agentId)) return;
       const defaultName = getDefaultSessionName(session.agentId);
@@ -1498,37 +1526,104 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
     return max;
   }, [statusLineHeightsByGroupId]);
 
-  if (!cwd) return null;
-
-  // Check if current worktree has any groups (used for empty state detection)
-  const hasAnyGroups = groups.length > 0;
-
-  // Helper to find session info (which worktree, group, index)
-  const findSessionInfo = (sessionId: string) => {
+  // Indexed session placement info for mounted terminals.
+  const sessionInfoById = useMemo(() => {
+    const map = new Map<string, AgentSessionInfo>();
     for (const [worktreePath, state] of Object.entries(worktreeGroupStates)) {
       for (let groupIndex = 0; groupIndex < state.groups.length; groupIndex++) {
         const group = state.groups[groupIndex];
-        if (group.sessionIds.includes(sessionId)) {
-          const session = allSessions.find((s) => s.id === sessionId);
+        for (const sessionId of group.sessionIds) {
+          const session = sessionsById.get(sessionId);
           if (session) {
-            return { worktreePath, state, group, groupIndex, session };
+            map.set(sessionId, { worktreePath, state, group, groupIndex, session });
           }
         }
       }
     }
-    return null;
-  };
+    return map;
+  }, [worktreeGroupStates, sessionsById]);
 
-  // Calculate cumulative left positions for groups
-  const getGroupPositions = (state: AgentGroupState) => {
-    const positions: { left: number; width: number }[] = [];
-    let cumulative = 0;
-    for (const percent of state.flexPercents) {
-      positions.push({ left: cumulative, width: percent });
-      cumulative += percent;
-    }
-    return positions;
-  };
+  const handleTerminalExit = useCallback(
+    (sessionId?: string) => {
+      if (!sessionId) return;
+      const groupId = sessionInfoById.get(sessionId)?.group.id;
+      handleCloseSession(sessionId, groupId);
+    },
+    [handleCloseSession, sessionInfoById]
+  );
+
+  const handleTerminalTitleChange = useCallback(
+    (sessionId: string | undefined, title: string) => {
+      if (!sessionId) return;
+      const session = sessionsById.get(sessionId);
+      if (!session || session.userRenamed) return;
+
+      const syncName =
+        title &&
+        isCursorAgent(session.agentId) &&
+        session.name === getDefaultSessionName(session.agentId);
+      if (session.terminalTitle === title && (!syncName || session.name === title)) {
+        return;
+      }
+
+      updateSession(sessionId, {
+        terminalTitle: title,
+        ...(syncName ? { name: title } : {}),
+      });
+    },
+    [sessionsById, updateSession]
+  );
+
+  const handleTerminalSplit = useCallback(
+    (sessionId?: string) => {
+      if (!sessionId) return;
+      const groupId = sessionInfoById.get(sessionId)?.group.id;
+      if (groupId) handleSplit(groupId);
+    },
+    [handleSplit, sessionInfoById]
+  );
+
+  const handleTerminalMerge = useCallback(
+    (sessionId?: string) => {
+      if (!sessionId) return;
+      const groupId = sessionInfoById.get(sessionId)?.group.id;
+      if (groupId) handleMerge(groupId);
+    },
+    [handleMerge, sessionInfoById]
+  );
+
+  const handleTerminalFocus = useCallback(
+    (sessionId?: string) => {
+      if (!sessionId) return;
+      const groupId = sessionInfoById.get(sessionId)?.group.id;
+      if (groupId) handleSelectSession(sessionId, groupId);
+    },
+    [handleSelectSession, sessionInfoById]
+  );
+
+  const handleTerminalEnhancedInputOpenChange = useCallback(
+    (sessionId: string | undefined, open: boolean) => {
+      if (!sessionId) return;
+      setEnhancedInputOpen(sessionId, open);
+    },
+    [setEnhancedInputOpen]
+  );
+
+  const handleRegisterEnhancedInputSender = useCallback(
+    (senderSessionId: string, sender: (content: string, imagePaths: string[]) => void) => {
+      enhancedInputSenderRef.current.set(senderSessionId, sender);
+    },
+    []
+  );
+
+  const handleUnregisterEnhancedInputSender = useCallback((senderSessionId: string) => {
+    enhancedInputSenderRef.current.delete(senderSessionId);
+  }, []);
+
+  if (!cwd) return null;
+
+  // Check if current worktree has any groups (used for empty state detection)
+  const hasAnyGroups = groups.length > 0;
 
   // Check if current worktree has no sessions (for empty state overlay)
   const showEmptyState = !hasAnyGroups && currentWorktreeSessions.length === 0;
@@ -1682,14 +1777,14 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
         style={{ bottom: maxStatusLineHeight + 8 }}
       >
         {Array.from(globalSessionIds).map((sessionId) => {
-          const session = allSessions.find((s) => s.id === sessionId);
+          const session = sessionsById.get(sessionId);
           if (!session) return null;
 
           // Check if this session belongs to current repo
           const isCurrentRepo = session.repoPath === repoPath;
 
           // Find session's group info for positioning
-          const info = findSessionInfo(sessionId);
+          const info = sessionInfoById.get(sessionId);
 
           // Determine if this session belongs to current worktree
           const isCurrentWorktree = isCurrentRepo && pathsEqual(session.cwd, cwd);
@@ -1745,38 +1840,22 @@ export function AgentPanel({ repoPath, cwd, isActive = false, onSwitchWorktree }
                 initialized={session.initialized}
                 activated={session.activated}
                 isActive={isTerminalActive}
+                isVisible={shouldShow}
                 hasPendingCommand={!!session.pendingCommand || !!session.startImmediately}
                 initialPrompt={session.pendingCommand}
-                onInitialized={() => handleInitialized(sessionId)}
-                onActivated={() => handleActivated(sessionId)}
-                onActivatedWithFirstLine={(line) => handleActivatedWithFirstLine(sessionId, line)}
-                onExit={() => handleCloseSession(sessionId, groupId || undefined)}
-                onTerminalTitleChange={(title) => {
-                  if (session.userRenamed) return;
-                  const syncName =
-                    title &&
-                    isCursorAgent(session.agentId) &&
-                    session.name === getDefaultSessionName(session.agentId);
-                  updateSession(sessionId, {
-                    terminalTitle: title,
-                    ...(syncName ? { name: title } : {}),
-                  });
-                }}
-                onSplit={() => groupId && handleSplit(groupId)}
+                onInitialized={handleInitialized}
+                onActivated={handleActivated}
+                onActivatedWithFirstLine={handleActivatedWithFirstLine}
+                onExit={handleTerminalExit}
+                onTerminalTitleChange={handleTerminalTitleChange}
+                onSplit={handleTerminalSplit}
                 canMerge={info ? info.groupIndex > 0 : false}
-                onMerge={() => groupId && handleMerge(groupId)}
-                onFocus={() => groupId && handleSelectSession(sessionId, groupId)}
+                onMerge={handleTerminalMerge}
+                onFocus={handleTerminalFocus}
                 enhancedInputOpen={getEnhancedInputState(sessionId).open}
-                onEnhancedInputOpenChange={(open) => {
-                  // EnhancedInput open state is now stored per-session in the store
-                  setEnhancedInputOpen(sessionId, open);
-                }}
-                onRegisterEnhancedInputSender={(senderSessionId, sender) => {
-                  enhancedInputSenderRef.current.set(senderSessionId, sender);
-                }}
-                onUnregisterEnhancedInputSender={(senderSessionId) => {
-                  enhancedInputSenderRef.current.delete(senderSessionId);
-                }}
+                onEnhancedInputOpenChange={handleTerminalEnhancedInputOpenChange}
+                onRegisterEnhancedInputSender={handleRegisterEnhancedInputSender}
+                onUnregisterEnhancedInputSender={handleUnregisterEnhancedInputSender}
               />
             </div>
           );

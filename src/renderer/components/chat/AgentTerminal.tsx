@@ -1,5 +1,5 @@
 import { ArrowDown } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   TerminalSearchBar,
   type TerminalSearchBarRef,
@@ -25,6 +25,7 @@ interface AgentTerminalProps {
   initialized?: boolean;
   activated?: boolean;
   isActive?: boolean;
+  isVisible?: boolean;
   hasPendingCommand?: boolean; // Force terminal activation even when not visible
   initialPrompt?: string; // Initial prompt to pass as CLI argument (auto-execute)
   canMerge?: boolean; // whether merge option should be enabled (has multiple groups)
@@ -33,16 +34,16 @@ interface AgentTerminalProps {
    * When omitted, AgentTerminal falls back to its own local state.
    */
   enhancedInputOpen?: boolean;
-  onEnhancedInputOpenChange?: (open: boolean) => void;
-  onInitialized?: () => void;
-  onActivated?: () => void;
+  onEnhancedInputOpenChange?: (id: string | undefined, open: boolean) => void;
+  onInitialized?: (id?: string) => void;
+  onActivated?: (id?: string) => void;
   /** Called when session is activated with the current line content (for session name fallback). */
-  onActivatedWithFirstLine?: (line: string) => void;
-  onExit?: () => void;
-  onTerminalTitleChange?: (title: string) => void;
-  onSplit?: () => void;
-  onMerge?: () => void;
-  onFocus?: () => void; // called when terminal is clicked/focused to activate the group
+  onActivatedWithFirstLine?: (id: string | undefined, line: string) => void;
+  onExit?: (id?: string) => void;
+  onTerminalTitleChange?: (id: string | undefined, title: string) => void;
+  onSplit?: (id?: string) => void;
+  onMerge?: (id?: string) => void;
+  onFocus?: (id?: string) => void; // called when terminal is clicked/focused to activate the group
   onRegisterEnhancedInputSender?: (
     sessionId: string,
     sender: (content: string, imagePaths: string[]) => void
@@ -57,7 +58,7 @@ const ACTIVITY_POLL_INTERVAL_MS = 1000; // Poll process activity every 1000ms
 const IDLE_CONFIRMATION_COUNT = 2; // Require 2 consecutive idle polls (2 seconds) before marking as idle
 const RECENT_OUTPUT_TIMEOUT_MS = 3000; // If output received within this time, consider still active
 
-export function AgentTerminal({
+function AgentTerminalComponent({
   id,
   cwd,
   sessionId,
@@ -69,6 +70,7 @@ export function AgentTerminal({
   initialized,
   activated,
   isActive = false,
+  isVisible,
   hasPendingCommand = false,
   initialPrompt,
   canMerge = false,
@@ -157,12 +159,12 @@ export function AgentTerminal({
   const setEnhancedInputOpen = useCallback(
     (open: boolean) => {
       if (isExternallyControlled) {
-        onEnhancedInputOpenChange?.(open);
+        onEnhancedInputOpenChange?.(id, open);
         return;
       }
       setLocalEnhancedInputOpen(open);
     },
-    [isExternallyControlled, onEnhancedInputOpenChange]
+    [id, isExternallyControlled, onEnhancedInputOpenChange]
   );
 
   // Keep isActiveRef in sync with isActive prop
@@ -186,10 +188,17 @@ export function AgentTerminal({
         claudeCodeIntegration.enhancedInputEnabled &&
         claudeCodeIntegration.enhancedInputAutoPopup === 'hideWhileRunning'
       ) {
-        onEnhancedInputOpenChange?.(false);
+        onEnhancedInputOpenChange?.(id, false);
       }
     },
-    [terminalSessionId, setOutputState, agentId, claudeCodeIntegration, onEnhancedInputOpenChange]
+    [
+      terminalSessionId,
+      setOutputState,
+      agentId,
+      claudeCodeIntegration,
+      id,
+      onEnhancedInputOpenChange,
+    ]
   );
 
   // Mark session as active when user is viewing it
@@ -480,10 +489,10 @@ export function AgentTerminal({
     );
 
     if (runtime >= MIN_RUNTIME_FOR_AUTO_CLOSE || isSessionNotFound) {
-      onExit?.();
+      onExit?.(id);
     }
     // Quick exit without session error - keep tab open for debugging
-  }, [onExit]);
+  }, [id, onExit]);
 
   // Track output for error detection and idle notification
   const handleData = useCallback(
@@ -496,7 +505,7 @@ export function AgentTerminal({
       // Mark as initialized on first data
       if (!hasInitializedRef.current && !initialized) {
         hasInitializedRef.current = true;
-        onInitialized?.();
+        onInitialized?.(id);
       }
 
       // Buffer output for error detection
@@ -564,6 +573,7 @@ export function AgentTerminal({
     },
     [
       initialized,
+      id,
       onInitialized,
       agentCommand,
       cwd,
@@ -580,9 +590,9 @@ export function AgentTerminal({
   const handleTitleChange = useCallback(
     (title: string) => {
       currentTitleRef.current = title;
-      onTerminalTitleChange?.(title);
+      onTerminalTitleChange?.(id, title);
     },
-    [onTerminalTitleChange]
+    [id, onTerminalTitleChange]
   );
 
   // Handle Shift+Enter for newline (Ctrl+J / LF for all agents)
@@ -622,10 +632,10 @@ export function AgentTerminal({
         // First Enter activates the session; optionally pass current line for session name.
         if (!hasActivatedRef.current && !activated) {
           hasActivatedRef.current = true;
-          onActivated?.();
+          onActivated?.(id);
           if (getCurrentLine && onActivatedWithFirstLine) {
             const line = getCurrentLine();
-            if (line) onActivatedWithFirstLine(line);
+            if (line) onActivatedWithFirstLine(id, line);
           }
         }
         // Reset output counter.
@@ -704,6 +714,7 @@ export function AgentTerminal({
     },
     [
       activated,
+      id,
       onActivated,
       onActivatedWithFirstLine,
       agentNotificationEnterDelay,
@@ -733,6 +744,7 @@ export function AgentTerminal({
     // Force activation when there's a pending command (auto-execute)
     return isActive || hasPendingCommand;
   }, [environment, hapiGlobalInstalled, isActive, resolvedShell, hasPendingCommand]);
+  const effectiveIsVisible = isVisible ?? isActive;
 
   const {
     containerRef,
@@ -750,6 +762,7 @@ export function AgentTerminal({
     command,
     env,
     isActive: effectiveIsActive,
+    isVisible: effectiveIsVisible,
     onExit: handleExit,
     onData: handleData,
     onCustomKey: handleCustomKey,
@@ -819,7 +832,7 @@ export function AgentTerminal({
   const handleContextMenu = useCallback(
     async (e: MouseEvent) => {
       e.preventDefault();
-      onFocus?.();
+      onFocus?.(id);
 
       const menuItems = [
         { id: 'split', label: t('Split Agent') },
@@ -848,10 +861,10 @@ export function AgentTerminal({
 
       switch (selectedId) {
         case 'split':
-          onSplit?.();
+          onSplit?.(id);
           break;
         case 'merge':
-          onMerge?.();
+          onMerge?.(id);
           break;
         case 'clear':
           clear();
@@ -881,7 +894,7 @@ export function AgentTerminal({
           break;
       }
     },
-    [terminal, clear, refreshRenderer, t, onSplit, canMerge, onMerge, onFocus]
+    [terminal, clear, refreshRenderer, t, onSplit, canMerge, onMerge, onFocus, id]
   );
 
   useEffect(() => {
@@ -924,9 +937,9 @@ export function AgentTerminal({
   // Handle click to activate group
   const handleClick = useCallback(() => {
     if (!isActive) {
-      onFocus?.();
+      onFocus?.(id);
     }
-  }, [isActive, onFocus]);
+  }, [id, isActive, onFocus]);
 
   // Handle enhanced input send
   const handleEnhancedInputSend = useCallback(
@@ -1017,3 +1030,5 @@ export function AgentTerminal({
     </div>
   );
 }
+
+export const AgentTerminal = memo(AgentTerminalComponent);

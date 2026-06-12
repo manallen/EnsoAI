@@ -51,8 +51,7 @@
       "**",
       "!**/node_modules",
       "!**/out",
-      "!**/dist",
-      "!**/.vibe",
+      "!**/dist*",
       "!**/.vibe",
       "!**/*.min.js",
       "!**/*.css"
