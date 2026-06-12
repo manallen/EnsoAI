@@ -123,9 +123,18 @@ jobs:
           rm $RUNNER_TEMP/certificate.p12
 
       - name: Build macOS (${{ matrix.arch }})
-        run: npx electron-builder --mac --${{ matrix.arch }}
+        run: |
+          if [ -z "$APPLE_CERTIFICATE" ]; then
+            CSC_IDENTITY_AUTO_DISCOVERY=false npx electron-builder --mac --${{ matrix.arch }} \
+              -c.mac.identity=null \
+              -c.mac.notarize=false \
+              -c.dmg.sign=false
+          else
+            npx electron-builder --mac --${{ matrix.arch }}
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
@@ -386,6 +395,7 @@ jobs:
 
   update-package-managers:
     name: Update Package Managers
+    if: ${{ vars.UPDATE_PACKAGE_MANAGERS == 'true' }}
     needs: generate-release-notes
     uses: ./.github/workflows/update-package-managers.yml
     with:

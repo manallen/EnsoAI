@@ -144,6 +144,6 @@ linux:
 
 publish:
   provider: github
-  owner: J3n5en
+  owner: manallen
   repo: EnsoAI
   releaseType: draft
