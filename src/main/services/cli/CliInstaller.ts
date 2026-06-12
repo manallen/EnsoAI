@@ -164,7 +164,7 @@ class CliInstaller {
         return match[1];
       }
       // Fallback for dev mode
-      return '/Applications/EnsoAI.app';
+      return '/Applications/enso man.app';
     }
     if (isWindows) {
       return app.getPath('exe');
@@ -175,7 +175,7 @@ class CliInstaller {
   private generateMacScript(): string {
     const appPath = this.getAppPath();
     return `#!/bin/bash
-# EnsoAI CLI - Open directories in EnsoAI
+# enso man CLI - Open directories in enso man
 
 # Get the target path
 if [ -z "$1" ]; then
@@ -193,12 +193,12 @@ else
   fi
 fi
 
-# Check if EnsoAI is running (production or dev mode)
-if pgrep -x "EnsoAI" > /dev/null 2>&1 || pgrep -f "electron.*EnsoAI" > /dev/null 2>&1; then
+# Check if enso man is running (production or dev mode)
+if pgrep -x "enso man" > /dev/null 2>&1 || pgrep -f "electron.*enso man" > /dev/null 2>&1; then
   # App is running, use AppleScript to send message directly
   osascript -e "
     tell application \\"System Events\\"
-      set frontmost of (first process whose name contains \\"EnsoAI\\" or name is \\"Electron\\") to true
+      set frontmost of (first process whose name contains \\"enso man\\" or name is \\"Electron\\") to true
     end tell
   " 2>/dev/null
 
@@ -209,7 +209,7 @@ else
   if [ -d "${appPath}" ]; then
     open -a "${appPath}" --args "--open-path=$TARGET_PATH"
   else
-    echo "EnsoAI not found at ${appPath}"
+    echo "enso man not found at ${appPath}"
     exit 1
   fi
 fi
@@ -222,7 +222,7 @@ fi
     return `@echo off
 setlocal enabledelayedexpansion
 
-:: EnsoAI CLI - Open directories in EnsoAI
+:: enso man CLI - Open directories in enso man
 
 :: Get the target path
 if "%~1"=="" (
@@ -231,8 +231,8 @@ if "%~1"=="" (
   set "TARGET_PATH=%~f1"
 )
 
-:: Check if EnsoAI is running
-tasklist /FI "IMAGENAME eq EnsoAI.exe" 2>NUL | find /I /N "EnsoAI.exe">NUL
+:: Check if enso man is running
+tasklist /FI "IMAGENAME eq enso-man.exe" 2>NUL | find /I /N "enso-man.exe">NUL
 if %ERRORLEVEL%==0 (
   :: App is running, use URL scheme with PowerShell for proper URL encoding
   for /f "usebackq delims=" %%i in (\`powershell -NoProfile -Command "[uri]::EscapeDataString('%TARGET_PATH%')"\`) do set "ENCODED_PATH=%%i"
@@ -247,7 +247,7 @@ if %ERRORLEVEL%==0 (
   private generateLinuxScript(): string {
     const exePath = this.getAppPath();
     return `#!/bin/bash
-# EnsoAI CLI - Open directories in EnsoAI
+# enso man CLI - Open directories in enso man
 
 # Get the target path
 if [ -z "$1" ]; then
@@ -265,8 +265,8 @@ else
   fi
 fi
 
-# Check if EnsoAI is running
-if pgrep -x "ensoai" > /dev/null 2>&1 || pgrep -f "EnsoAI" > /dev/null 2>&1; then
+# Check if enso man is running
+if pgrep -x "enso-man" > /dev/null 2>&1 || pgrep -f "enso man" > /dev/null 2>&1; then
   # App is running, use xdg-open with URL scheme
   ENCODED_PATH=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$TARGET_PATH', safe=''))")
   xdg-open "enso://open?path=$ENCODED_PATH" 2>/dev/null || \\
@@ -276,7 +276,7 @@ else
   if [ -x "${exePath}" ]; then
     "${exePath}" --open-path="$TARGET_PATH" &
   else
-    echo "EnsoAI not found at ${exePath}"
+    echo "enso man not found at ${exePath}"
     exit 1
   fi
 fi

@@ -125,12 +125,12 @@ jobs:
       - name: Build macOS (${{ matrix.arch }})
         run: |
           if [ -z "$APPLE_CERTIFICATE" ]; then
-            CSC_IDENTITY_AUTO_DISCOVERY=false npx electron-builder --mac --${{ matrix.arch }} \
+            CSC_IDENTITY_AUTO_DISCOVERY=false pnpm exec electron-builder --mac --${{ matrix.arch }} \
               -c.mac.identity=null \
               -c.mac.notarize=false \
               -c.dmg.sign=false
           else
-            npx electron-builder --mac --${{ matrix.arch }}
+            pnpm exec electron-builder --mac --${{ matrix.arch }}
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -193,7 +193,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Windows
-        run: npx electron-builder --win --x64
+        run: pnpm exec electron-builder --win --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -243,7 +243,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Linux
-        run: npx electron-builder --linux --x64
+        run: pnpm exec electron-builder --linux --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -373,12 +373,12 @@ jobs:
             echo ""
             echo "| 平台 | 文件 |"
             echo "|------|------|"
-            echo "| macOS (Apple Silicon) | [EnsoAI-${VERSION}-arm64.dmg](https://github.com/${{ github.repository }}/releases/download/${TAG}/EnsoAI-${VERSION}-arm64.dmg) |"
-            echo "| macOS (Intel) | [EnsoAI-${VERSION}.dmg](https://github.com/${{ github.repository }}/releases/download/${TAG}/EnsoAI-${VERSION}.dmg) |"
-            echo "| Windows (x64 安装版) | [EnsoAI-Setup-${VERSION}.exe](https://github.com/${{ github.repository }}/releases/download/${TAG}/EnsoAI-Setup-${VERSION}.exe) |"
-            echo "| Windows (x64 便携版) | [EnsoAI-${VERSION}-portable.exe](https://github.com/${{ github.repository }}/releases/download/${TAG}/EnsoAI-${VERSION}-portable.exe) |"
-            echo "| Linux (x64 AppImage) | [EnsoAI-${VERSION}.AppImage](https://github.com/${{ github.repository }}/releases/download/${TAG}/EnsoAI-${VERSION}.AppImage) |"
-            echo "| Linux (x64 deb) | [enso-ai_${VERSION}_amd64.deb](https://github.com/${{ github.repository }}/releases/download/${TAG}/enso-ai_${VERSION}_amd64.deb) |"
+            echo "| macOS (Apple Silicon) | [enso-man-${VERSION}-arm64.dmg](https://github.com/${{ github.repository }}/releases/download/${TAG}/enso-man-${VERSION}-arm64.dmg) |"
+            echo "| macOS (Intel) | [enso-man-${VERSION}-x64.dmg](https://github.com/${{ github.repository }}/releases/download/${TAG}/enso-man-${VERSION}-x64.dmg) |"
+            echo "| Windows (x64 安装版) | [enso-man-setup-${VERSION}-x64.exe](https://github.com/${{ github.repository }}/releases/download/${TAG}/enso-man-setup-${VERSION}-x64.exe) |"
+            echo "| Windows (x64 便携版) | [enso-man-${VERSION}-portable.exe](https://github.com/${{ github.repository }}/releases/download/${TAG}/enso-man-${VERSION}-portable.exe) |"
+            echo "| Linux (x64 AppImage) | [enso-man-${VERSION}-x64.AppImage](https://github.com/${{ github.repository }}/releases/download/${TAG}/enso-man-${VERSION}-x64.AppImage) |"
+            echo "| Linux (x64 deb) | [enso-man-${VERSION}-x64.deb](https://github.com/${{ github.repository }}/releases/download/${TAG}/enso-man-${VERSION}-x64.deb) |"
             echo ""
             echo "---"
             echo ""

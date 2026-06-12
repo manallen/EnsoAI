@@ -1,6 +1,7 @@
-appId: com.ensoai.app
-productName: EnsoAI
+appId: com.ensoman.app
+productName: enso man
 copyright: Copyright © 2025
+artifactName: ${name}-${version}-${arch}.${ext}
 
 directories:
   output: dist
@@ -81,6 +82,7 @@ asarUnpack:
 compression: maximum
 
 mac:
+  artifactName: ${name}-${version}-${arch}.${ext}
   target:
     - dmg
     - zip
@@ -94,11 +96,12 @@ mac:
   # Register enso:// URL scheme
   extendInfo:
     CFBundleURLTypes:
-      - CFBundleURLName: EnsoAI
+      - CFBundleURLName: enso man
         CFBundleURLSchemes:
           - enso
 
 dmg:
+  artifactName: ${name}-${version}-${arch}.${ext}
   sign: true
   contents:
     - x: 130
@@ -109,6 +112,8 @@ dmg:
       path: /Applications
 
 win:
+  executableName: enso-man
+  artifactName: ${name}-${version}-${arch}.${ext}
   target:
     # NSIS supports delta updates automatically
     - target: nsis
@@ -117,9 +122,10 @@ win:
       arch: [x64]
 
 portable:
-  artifactName: ${productName}-${version}-portable.exe
+  artifactName: ${name}-${version}-portable.${ext}
 
 nsis:
+  artifactName: ${name}-setup-${version}-${arch}.${ext}
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true
@@ -130,13 +136,14 @@ nsis:
   include: build/installer.nsh
 
 linux:
+  artifactName: ${name}-${version}-${arch}.${ext}
   target:
     - target: AppImage
       arch: [x64]
     - target: deb
       arch: [x64]
-  executableName: enso-ai
-  maintainer: EnsoAI Team <crolin-zhang@users.noreply.github.com>
+  executableName: enso-man
+  maintainer: enso man Team <crolin-zhang@users.noreply.github.com>
   category: Development
   # Register enso:// URL scheme
   mimeTypes:
